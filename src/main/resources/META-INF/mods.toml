@@ -1,0 +1,26 @@
+modLoader="javafml" 
+loaderVersion="[35,)" 
+issueTrackerURL="https://github.com/MysticMods/MysticalBiomes/issues"
+license="https://github.com/MysticMods/MysticalBiomes/blob/master/LICENSE"
+[[mods]] 
+modId="mysticalbiomes" 
+version="${file.jarVersion}" 
+displayName="Mystical Biomes"
+displayURL="https://minecraft.curseforge.com/projects/mystical-biomes"
+credits="Prospector, Traverse & Terraform Team for inspiration"
+authors="Noobanidus"
+description='''
+A collection of mystical biomes to improve your world!
+'''
+[[dependencies.mysticalbiomes]]
+    modId="forge"
+    mandatory=true
+    versionRange="[35,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.mysticalbiomes]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.4,)"
+    ordering="NONE"
+    side="BOTH"
