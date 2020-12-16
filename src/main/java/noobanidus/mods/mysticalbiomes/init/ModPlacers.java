@@ -7,7 +7,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
-import noobanidus.libs.noobutil.world.gen.placer.ColumnBaseBlockPlacer;
+import noobanidus.mods.mysticalbiomes.world.placer.ColumnBasePlacer;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +16,7 @@ import java.util.Set;
 public class ModPlacers {
   private static Set<BlockPlacerType<?>> PLACERS = new HashSet<>();
 
-  public static final BlockPlacerType<ColumnBaseBlockPlacer> COLUMN_BASE_PLACER = register("column_base_placer", new BlockPlacerType<>(ColumnBaseBlockPlacer.CODEC));
+  public static final BlockPlacerType<ColumnBasePlacer> COLUMN_BASE_PLACER = register("column_base_placer", new BlockPlacerType<>(ColumnBasePlacer.CODEC));
 
   private static <T extends BlockPlacer> BlockPlacerType<T> register(String name, BlockPlacerType<T> feature) {
     ResourceLocation rl = new ResourceLocation(MysticalBiomes.MODID, name);

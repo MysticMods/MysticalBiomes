@@ -14,14 +14,13 @@ import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.ChanceConfig;
-import net.minecraft.world.gen.placement.NoiseDependant;
 import net.minecraft.world.gen.placement.Placement;
 import noobanidus.libs.noobutil.types.LazyStateSupplier;
-import noobanidus.libs.noobutil.world.gen.config.BlockStateRadiusFeatureConfig;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
 import noobanidus.mods.mysticalbiomes.config.SupplierBlockClusterFeatureConfig;
 import noobanidus.mods.mysticalbiomes.config.SupplierSphereReplaceConfig;
-import noobanidus.libs.noobutil.world.gen.placer.ColumnBaseBlockPlacer;
+import noobanidus.mods.mysticalbiomes.world.SupplierBlockStateProvider;
+import noobanidus.mods.mysticalbiomes.world.placer.ColumnBasePlacer;
 
 import java.util.Arrays;
 
@@ -40,7 +39,7 @@ public class ConfiguredFeatures {
 
   public static final ConfiguredFeature<?, ?> DISK_ANDESITE = register("supplier_disk_andesite", ModFeatures.SUPPLIER_DISK.withConfiguration(new SupplierSphereReplaceConfig(Blocks.ANDESITE.getDefaultState(), FeatureSpread.func_242253_a(1, 4), 1, ImmutableList.of(new LazyStateSupplier("mysticalworld", "soft_stone")))).func_242732_c(1).withPlacement(Features.Placements.SEAGRASS_DISK_PLACEMENT));
 
-  public static final ConfiguredFeature<?, ?> COBBLE_TREE = register("cobble_tree", ModFeatures.SUPPLIER_RANDOM_PATCH.withConfiguration(new SupplierBlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.COBBLESTONE.getDefaultState()), new ColumnBaseBlockPlacer(5, 20, 3, 7, Arrays.asList(new LazyStateSupplier("mysticalworld", "soft_stone"), new LazyStateSupplier(Blocks.GRAVEL.getDefaultState()), new LazyStateSupplier(Blocks.ANDESITE.getDefaultState())), 6)).tries(15).noProjection().whitelist(Sets.newHashSet(new LazyStateSupplier("mysticalworld", "soft_stone"), new LazyStateSupplier(Blocks.GRAVEL.getDefaultState()))).build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(1, 0.1F, 1))));
+  public static final ConfiguredFeature<?, ?> COBBLE_TREE = register("cobble_tree", ModFeatures.SUPPLIER_RANDOM_PATCH.withConfiguration(new SupplierBlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.COBBLESTONE.getDefaultState()), new ColumnBasePlacer(5, 20, 3, 7, Arrays.asList(new LazyStateSupplier("mysticalworld", "soft_stone"), new LazyStateSupplier(Blocks.GRAVEL.getDefaultState()), new LazyStateSupplier(Blocks.ANDESITE.getDefaultState())), 6)).tries(15).noProjection().whitelist(Sets.newHashSet(new LazyStateSupplier("mysticalworld", "soft_stone"), new LazyStateSupplier(Blocks.GRAVEL.getDefaultState()))).build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(1, 0.1F, 1))));
 
   public static final ConfiguredFeature<?, ?> SOFT_STONE_TREE = register("soft_stone_tree", ModFeatures.SUPPLIER_RANDOM_PATCH.withConfiguration((new SupplierBlockClusterFeatureConfig.Builder(new SupplierBlockStateProvider("mysticalworld", "soft_stone"), new ColumnBlockPlacer(5, 18))).tries(20).noProjection().whitelist(Sets.newHashSet(new LazyStateSupplier("mysticalworld", "soft_stone"))).build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.6F, 1))));
 

@@ -9,10 +9,11 @@ import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import noobanidus.libs.noobutil.config.BiomeConfig;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
-import noobanidus.mods.mysticalbiomes.biome.SproutForestBiome;
+import noobanidus.mods.mysticalbiomes.biome.BiomeVariants;
 import noobanidus.mods.mysticalbiomes.biome.PetrifiedWastesBiome;
-import noobanidus.mods.mysticalbiomes.config.BiomeConfig;
+import noobanidus.mods.mysticalbiomes.biome.SproutForestBiome;
 import noobanidus.mods.mysticalbiomes.config.ConfigManager;
 
 import java.util.HashSet;
@@ -37,7 +38,7 @@ public class ModBiomes {
     BiomeVariants.addReplacement(k(SPROUT_FOREST), k(SPROUT_BEACH), 1, BiomeVariants.VariantType.SHORE);
   }
 
-  public static void load () {
+  public static void load() {
 
   }
 
@@ -48,14 +49,14 @@ public class ModBiomes {
     return biome;
   }
 
-  private static RegistryKey<Biome> k (Biome b) {
+  private static RegistryKey<Biome> k(Biome b) {
     return RegistryKey.getOrCreateKey(Registry.BIOME_KEY, Objects.requireNonNull(b.getRegistryName()));
   }
 
   private static void register(Biome b, BiomeConfig config, BiomeManager.BiomeType managerType, BiomeDictionary.Type... dictTypes) {
     RegistryKey<Biome> biome = k(b);
     if (config.shouldSpawn()) {
-      BiomeManager.addBiome(managerType, new BiomeManager.BiomeEntry(biome, config.getWeight()));
+      BiomeManager.addBiome(managerType, new BiomeManager.BiomeEntry(biome, (int) config.weight()));
       BiomeDictionary.addTypes(biome, dictTypes);
     }
   }

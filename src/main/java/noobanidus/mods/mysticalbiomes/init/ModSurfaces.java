@@ -1,17 +1,14 @@
 package noobanidus.mods.mysticalbiomes.init;
 
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.gen.blockstateprovider.BlockStateProviderType;
-import net.minecraft.world.gen.surfacebuilders.DefaultSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.ISurfaceBuilderConfig;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
-import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
 import noobanidus.mods.mysticalbiomes.config.SupplierSurfaceBuilderConfig;
-import noobanidus.mods.mysticalbiomes.feature.SupplierDefaultSurfaceBuilder;
+import noobanidus.mods.mysticalbiomes.world.feature.SupplierDefaultSurfaceBuilder;
 
 import java.util.HashSet;
 import java.util.Set;

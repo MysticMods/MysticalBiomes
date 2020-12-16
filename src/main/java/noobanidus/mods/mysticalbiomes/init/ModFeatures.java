@@ -16,10 +16,11 @@ import noobanidus.mods.mysticalbiomes.MysticalBiomes;
 import noobanidus.mods.mysticalbiomes.config.SupplierBlockClusterFeatureConfig;
 import noobanidus.mods.mysticalbiomes.config.SupplierBlockStateFeatureConfig;
 import noobanidus.mods.mysticalbiomes.config.SupplierSphereReplaceConfig;
-import noobanidus.mods.mysticalbiomes.feature.SupplierBlockSpikeFeature;
-import noobanidus.mods.mysticalbiomes.feature.SupplierRandomPatchFeature;
-import noobanidus.mods.mysticalbiomes.feature.SupplierSphereReplaceFeature;
-import noobanidus.mods.mysticalbiomes.feature.TallRedMushroomFeature;
+import noobanidus.mods.mysticalbiomes.world.SupplierBlockStateProvider;
+import noobanidus.mods.mysticalbiomes.world.feature.SupplierBlockSpikeFeature;
+import noobanidus.mods.mysticalbiomes.world.feature.SupplierRandomPatchFeature;
+import noobanidus.mods.mysticalbiomes.world.feature.SupplierSphereReplaceFeature;
+import noobanidus.mods.mysticalbiomes.world.feature.TallRedMushroomFeature;
 
 import java.util.HashSet;
 import java.util.Set;

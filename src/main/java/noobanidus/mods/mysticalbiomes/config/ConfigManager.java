@@ -3,6 +3,7 @@ package noobanidus.mods.mysticalbiomes.config;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
 import net.minecraftforge.common.ForgeConfigSpec;
+import noobanidus.libs.noobutil.config.BiomeConfig;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -14,8 +15,10 @@ public class ConfigManager {
 
   private static final ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
 
-  public static BiomeConfig SPROUT_PLAINS = new BiomeConfig("sprout_plains", 5);
-  public static BiomeConfig STONE_WASTES = new BiomeConfig("stone_wastes", 2);
+  public static BiomeConfig.Builder config = new BiomeConfig.Builder(BIOMES);
+
+  public static BiomeConfig SPROUT_PLAINS = config.build("sprout_plains", 5);
+  public static BiomeConfig STONE_WASTES = config.build("stone_wastes", 2);
 /*  public static BiomeConfig AUTUMNAL_WOODED_HILLS = new BiomeConfig("autumnal_wooded_hills", 1);
   public static BiomeConfig AUTUMNAL_WOODS = new BiomeConfig("autumnal_woods", 3);
   public static BiomeConfig CLIFFS = new BiomeConfig("cliffs", 1);

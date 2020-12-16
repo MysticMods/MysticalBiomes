@@ -1,4 +1,4 @@
-package noobanidus.mods.mysticalbiomes.feature;
+package noobanidus.mods.mysticalbiomes.world.feature;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;

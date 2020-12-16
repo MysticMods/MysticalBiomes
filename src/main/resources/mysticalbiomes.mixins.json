@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "noobanidus.mods.mysticalbiomes.biomebuilder.mixin",
+  "package": "noobanidus.mods.mysticalbiomes.mixin",
   "compatibilityLevel": "JAVA_8",
   "refmap": "mysticalbiomes.refmap.json",
   "mixins": [

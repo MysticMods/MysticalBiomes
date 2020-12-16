@@ -12,7 +12,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
-import noobanidus.mods.mysticalbiomes.structures.MushroomHutStructure;
+import noobanidus.mods.mysticalbiomes.world.structures.MushroomHutStructure;
 
 import java.util.HashSet;
 import java.util.Set;

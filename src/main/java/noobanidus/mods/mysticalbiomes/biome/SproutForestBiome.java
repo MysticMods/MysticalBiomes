@@ -1,6 +1,5 @@
 package noobanidus.mods.mysticalbiomes.biome;
 
-import epicsquid.mysticalworld.init.ModEntities;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -8,11 +7,9 @@ import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.carver.ConfiguredCarvers;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.structure.StructureFeatures;
-import noobanidus.mods.mysticalbiomes.biomebuilder.BiomeBuilder;
-import noobanidus.mods.mysticalbiomes.init.ColorConstants;
+import noobanidus.libs.noobutil.world.gen.BiomeBuilder;
 import noobanidus.mods.mysticalbiomes.init.ConfiguredFeatures;
 import noobanidus.mods.mysticalbiomes.init.ConfiguredStructures;
 import noobanidus.mods.mysticalbiomes.init.ConfiguredSurfaceBuilders;
@@ -70,8 +67,8 @@ public class SproutForestBiome {
 
   public static Biome SPROUT_RIVER = SPROUT_TEMPLATE.builder()
       .category(Biome.Category.RIVER)
-       .addSpawnFunctions((o) ->
-        o.withSpawner(EntityClassification.WATER_CREATURE, new MobSpawnInfo.Spawners(EntityType.SQUID, 2, 1, 4)).withSpawner(EntityClassification.WATER_AMBIENT, new MobSpawnInfo.Spawners(EntityType.SALMON, 5, 1, 5)).withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.DROWNED, 100, 1, 1))
+      .addSpawnFunctions((o) ->
+          o.withSpawner(EntityClassification.WATER_CREATURE, new MobSpawnInfo.Spawners(EntityType.SQUID, 2, 1, 4)).withSpawner(EntityClassification.WATER_AMBIENT, new MobSpawnInfo.Spawners(EntityType.SALMON, 5, 1, 5)).withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.DROWNED, 100, 1, 1))
       )
       .depth(-0.5f)
       .scale(0.0f)
