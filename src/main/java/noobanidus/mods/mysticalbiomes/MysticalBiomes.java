@@ -13,7 +13,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 import noobanidus.libs.noobutil.registrate.CustomRegistrate;
-import noobanidus.mods.mysticalbiomes.command.GenDataCommand;
+import noobanidus.libs.noobutil.command.GenDataCommand;
 import noobanidus.mods.mysticalbiomes.config.ConfigManager;
 import noobanidus.mods.mysticalbiomes.setup.ModSetup;
 import org.apache.logging.log4j.LogManager;

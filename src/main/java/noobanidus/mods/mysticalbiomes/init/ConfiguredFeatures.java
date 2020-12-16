@@ -21,7 +21,7 @@ import noobanidus.libs.noobutil.world.gen.config.BlockStateRadiusFeatureConfig;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
 import noobanidus.mods.mysticalbiomes.config.SupplierBlockClusterFeatureConfig;
 import noobanidus.mods.mysticalbiomes.config.SupplierSphereReplaceConfig;
-import noobanidus.mods.mysticalbiomes.placer.ColumnBaseBlockPlacer;
+import noobanidus.libs.noobutil.world.gen.placer.ColumnBaseBlockPlacer;
 
 import java.util.Arrays;
 
@@ -48,7 +48,7 @@ public class ConfiguredFeatures {
 
   public static final ConfiguredFeature<?, ?> PATCH_PETRIFIED_BUSH = register("patch_petrified_bush", ModFeatures.SUPPLIER_RANDOM_PATCH.withConfiguration(new SupplierBlockClusterFeatureConfig.Builder(new SupplierBlockStateProvider("mysticalworld", "petrified_bush"), SimpleBlockPlacer.PLACER).tries(8).whitelist(ImmutableSet.of(new LazyStateSupplier("mysticalworld", "soft_stone"), new LazyStateSupplier(Blocks.GRAVEL.getDefaultState()), new LazyStateSupplier(Blocks.ANDESITE.getDefaultState()))).replaceable().noProjection().build()).withPlacement(Features.Placements.PATCH_PLACEMENT).func_242731_b(10));
 
-  public static final ConfiguredFeature<?, ?> PATCH_PETRIFIED_GRASS = register("patch_petrified_grass", ModFeatures.SUPPLIER_RANDOM_PATCH.withConfiguration(new SupplierBlockClusterFeatureConfig.Builder(new SupplierBlockStateProvider("mysticalworld", "petrified_grass"), SimpleBlockPlacer.PLACER).tries(128).whitelist(ImmutableSet.of(new LazyStateSupplier("mysticalworld", "soft_stone"), new LazyStateSupplier(Blocks.GRAVEL.getDefaultState()), new LazyStateSupplier(Blocks.ANDESITE.getDefaultState()))).replaceable().noProjection().build()).withPlacement(Features.Placements.PATCH_PLACEMENT).func_242731_b(80));
+  public static final ConfiguredFeature<?, ?> PATCH_PETRIFIED_GRASS = register("patch_petrified_grass", ModFeatures.SUPPLIER_RANDOM_PATCH.withConfiguration(new SupplierBlockClusterFeatureConfig.Builder(new SupplierBlockStateProvider("mysticalworld", "petrified_grass"), SimpleBlockPlacer.PLACER).tries(32).build()).withPlacement(Features.Placements.PATCH_PLACEMENT).func_242731_b(5));
 
   private static ConfiguredFeature<?, ?> register(String id, ConfiguredFeature<?, ?> feature) {
     return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(MysticalBiomes.MODID, id), feature);

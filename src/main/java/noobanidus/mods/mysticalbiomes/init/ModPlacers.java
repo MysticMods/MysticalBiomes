@@ -7,7 +7,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
-import noobanidus.mods.mysticalbiomes.placer.ColumnBaseBlockPlacer;
+import noobanidus.libs.noobutil.world.gen.placer.ColumnBaseBlockPlacer;
 
 import java.util.HashSet;
 import java.util.Set;

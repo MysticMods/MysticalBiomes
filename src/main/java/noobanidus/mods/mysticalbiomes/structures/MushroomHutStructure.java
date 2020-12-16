@@ -25,7 +25,7 @@ public class MushroomHutStructure extends Structure<NoFeatureConfig> {
 
   @Override
   public IStartFactory<NoFeatureConfig> getStartFactory() {
-    return Start::new;
+    return MushroomHutStructure.Start::new;
   }
 
   @Override
@@ -40,6 +40,7 @@ public class MushroomHutStructure extends Structure<NoFeatureConfig> {
 
     @Override
     public void func_230364_a_(DynamicRegistries dynamicRegistryManager, ChunkGenerator chunkGenerator, TemplateManager templateManagerIn, int chunkX, int chunkZ, Biome biomeIn, NoFeatureConfig config) {
+
       int x = (chunkX << 4) + 7;
       int z = (chunkZ << 4) + 7;
 
@@ -48,7 +49,7 @@ public class MushroomHutStructure extends Structure<NoFeatureConfig> {
       JigsawManager.func_242837_a(
           dynamicRegistryManager,
           new VillageConfig(() -> dynamicRegistryManager.getRegistry(Registry.JIGSAW_POOL_KEY)
-              .getOrDefault(new ResourceLocation(MysticalBiomes.MODID, "mushroom_hut")),
+              .getOrDefault(new ResourceLocation(MysticalBiomes.MODID, "house_pool/start_pool")),
               50),
           AbstractVillagePiece::new,
           chunkGenerator,
@@ -58,6 +59,8 @@ public class MushroomHutStructure extends Structure<NoFeatureConfig> {
           this.rand,
           true,
           true);
+
+      this.recalculateStructureSize();
     }
   }
 }
