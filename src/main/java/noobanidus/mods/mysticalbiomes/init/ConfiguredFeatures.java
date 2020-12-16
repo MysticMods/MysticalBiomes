@@ -16,9 +16,9 @@ import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.Placement;
 import noobanidus.libs.noobutil.types.LazyStateSupplier;
+import noobanidus.libs.noobutil.world.gen.config.SupplierBlockClusterFeatureConfig;
+import noobanidus.libs.noobutil.world.gen.config.SupplierSphereReplaceConfig;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
-import noobanidus.mods.mysticalbiomes.config.SupplierBlockClusterFeatureConfig;
-import noobanidus.mods.mysticalbiomes.config.SupplierSphereReplaceConfig;
 import noobanidus.mods.mysticalbiomes.world.SupplierBlockStateProvider;
 import noobanidus.mods.mysticalbiomes.world.placer.ColumnBasePlacer;
 

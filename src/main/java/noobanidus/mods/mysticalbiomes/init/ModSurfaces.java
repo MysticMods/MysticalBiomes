@@ -6,9 +6,9 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import noobanidus.libs.noobutil.world.gen.config.SupplierSurfaceBuilderConfig;
+import noobanidus.libs.noobutil.world.gen.feature.SupplierDefaultSurfaceBuilder;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
-import noobanidus.mods.mysticalbiomes.config.SupplierSurfaceBuilderConfig;
-import noobanidus.mods.mysticalbiomes.world.feature.SupplierDefaultSurfaceBuilder;
 
 import java.util.HashSet;
 import java.util.Set;
