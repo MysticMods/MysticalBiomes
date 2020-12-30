@@ -20,16 +20,15 @@ public class PetrifiedWastesBiome {
       .effects(BiomeBuilder.createDefaultBiomeAmbience()
           .withGrassColor(9470285)
           .withFoliageColor(9470285)
-          .setWaterColor(0xd1d9ad)
-          .setWaterFogColor(0xd1d9ad)
-          .setFogColor(0xd1d9ad)
-          .withSkyColor(0xd1d9ad)
+          .setWaterColor(0x809678)
+          .setWaterFogColor(0x809678)
+          .setFogColor(0x809678)
+          .withSkyColor(0x809678)
       )
       .addDefaultFeatureFunctions(
           DefaultBiomeFeatures::withStrongholdAndMineshaft,
           DefaultBiomeFeatures::withCavesAndCanyons,
           DefaultBiomeFeatures::withFossils,
-          DefaultBiomeFeatures::withLavaLakes, // addLakes
           DefaultBiomeFeatures::withMonsterRoom // addMonsterRooms
       )
       .addStructureFeature(StructureFeatures.RUINED_PORTAL_MOUNTAIN)
@@ -52,13 +51,13 @@ public class PetrifiedWastesBiome {
       .category(Biome.Category.DESERT)
       .depth(0.125F)
       .scale(0.0F)
+      .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.PATCH_STONEPETAL)
       .addFeature(GenerationStage.Decoration.LAKES, ConfiguredFeatures.REGULAR_LAVA)
-      .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.COBBLE_TREE)
-      .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.SOFT_STONE_TREE)
+      .addFeature(GenerationStage.Decoration.LAKES, ConfiguredFeatures.CORAL_LAKE)
+      .addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, ConfiguredFeatures.COBBLE_TREE)
+      .addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, ConfiguredFeatures.SOFT_STONE_TREE)
       .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.DISK_ANDESITE)
       .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.DISK_GRAVEL)
-      .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.PATCH_PETRIFIED_GRASS)
-      .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.PATCH_PETRIFIED_BUSH)
       .build();
 
   public static Biome PETRIFIED_BEACH = PETRIFIED_TEMPLATE.builder()

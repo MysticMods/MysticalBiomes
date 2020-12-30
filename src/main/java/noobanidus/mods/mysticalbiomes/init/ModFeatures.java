@@ -10,10 +10,7 @@ import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import noobanidus.libs.noobutil.world.gen.config.BlockStateRadiusFeatureConfig;
-import noobanidus.libs.noobutil.world.gen.config.SupplierBlockClusterFeatureConfig;
-import noobanidus.libs.noobutil.world.gen.config.SupplierBlockStateFeatureConfig;
-import noobanidus.libs.noobutil.world.gen.config.SupplierSphereReplaceConfig;
+import noobanidus.libs.noobutil.world.gen.config.*;
 import noobanidus.libs.noobutil.world.gen.feature.*;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
 import noobanidus.mods.mysticalbiomes.world.SupplierBlockStateProvider;
@@ -30,6 +27,7 @@ public class ModFeatures {
   public static final Feature<SupplierSphereReplaceConfig> SUPPLIER_DISK = register("supplier_disk", new SupplierSphereReplaceFeature((SupplierSphereReplaceConfig.CODEC)));
   public static final Feature<SupplierBlockClusterFeatureConfig> SUPPLIER_RANDOM_PATCH = register("supplier_random_patch", new SupplierRandomPatchFeature(SupplierBlockClusterFeatureConfig.CODEC));
   public static final Feature<BlockStateRadiusFeatureConfig> BIG_ROCK = register("big_rock", new RadiusBlockBlobFeature(BlockStateRadiusFeatureConfig.CODEC));
+  public static final Feature<WeightedBlockStateFeatureConfig> WEIGHTED_LAKE = register("weighted_lake", new WeightedLakesFeature(WeightedBlockStateFeatureConfig.CODEC));
 
   private static <T extends IFeatureConfig> Feature<T> register(String name, Feature<T> feature) {
     ResourceLocation rl = new ResourceLocation(MysticalBiomes.MODID, name);

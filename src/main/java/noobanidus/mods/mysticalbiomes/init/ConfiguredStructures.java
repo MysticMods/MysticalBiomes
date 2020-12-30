@@ -21,9 +21,6 @@ public class ConfiguredStructures {
   private static StructureFeature<?, ?> register(String id, @Nullable Structure<?> structure, StructureFeature<?, ?> feature) {
     ResourceLocation rl = new ResourceLocation(MysticalBiomes.MODID, id);
 
-    if (structure != null) {
-      FlatGenerationSettings.STRUCTURES.put(structure, feature);
-    }
     return Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, rl, feature);
   }
 

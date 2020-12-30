@@ -56,7 +56,7 @@ minecraft {
              properties 'mixin.env.disableRefMap': 'true'
 
             mods {
-                mysticalworld {
+                mysticalbiomes {
                     source sourceSets.main
                 }
             }
@@ -72,7 +72,7 @@ minecraft {
             properties 'mixin.env.disableRefMap': 'true'
             arg "-mixin.config=mysticalbiomes.mixins.json"
             mods {
-                mysticalworld {
+                mysticalbiomes {
                     source sourceSets.main
                 }
             }
@@ -87,10 +87,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
             properties 'mixin.env.disableRefMap': 'true'
             arg "-mixin.config=mysticalbiomes.mixins.json"
-            args '--mod', 'mysticalworld', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'mysticalbiomes', '--all', '--output', file('src/generated/resources/')
 
             mods {
-                mysticalworld {
+                mysticalbiomes {
                     source sourceSets.main
                 }
             }
@@ -148,6 +148,10 @@ dependencies {
     compile fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
     compile 'org.spongepowered:mixin:0.8'
     annotationProcessor 'org.spongepowered:mixin:0.8:processor'
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
 }
 
 jar {
