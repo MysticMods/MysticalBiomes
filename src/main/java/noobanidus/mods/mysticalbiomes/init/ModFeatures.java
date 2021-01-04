@@ -14,6 +14,7 @@ import noobanidus.libs.noobutil.world.gen.config.*;
 import noobanidus.libs.noobutil.world.gen.feature.*;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
 import noobanidus.mods.mysticalbiomes.world.SupplierBlockStateProvider;
+import noobanidus.mods.mysticalbiomes.world.features.SurfaceFossilsFeature;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,11 +23,15 @@ import java.util.Set;
 public class ModFeatures {
   private static Set<Feature<?>> FEATURES = new HashSet<>();
 
+  public static final Feature<NoFeatureConfig> EMPTY = register("empty", new EmptyFeature());
+
+  public static final Feature<NoFeatureConfig> SURFACE_FOSSIL = register("surface_fossil", new SurfaceFossilsFeature(NoFeatureConfig.field_236558_a_));
   public static final Feature<BigMushroomFeatureConfig> TALL_RED_MUSHROOM = register("tall_red_mushroom", new TallRedMushroomFeature(BigMushroomFeatureConfig.CODEC));
   public static final Feature<SupplierBlockStateFeatureConfig> SUPPLIER_BLOCK_SPIKE = register("supplier_spike", new SupplierBlockSpikeFeature(SupplierBlockStateFeatureConfig.CODEC));
   public static final Feature<SupplierSphereReplaceConfig> SUPPLIER_DISK = register("supplier_disk", new SupplierSphereReplaceFeature((SupplierSphereReplaceConfig.CODEC)));
   public static final Feature<SupplierBlockClusterFeatureConfig> SUPPLIER_RANDOM_PATCH = register("supplier_random_patch", new SupplierRandomPatchFeature(SupplierBlockClusterFeatureConfig.CODEC));
   public static final Feature<BlockStateRadiusFeatureConfig> BIG_ROCK = register("big_rock", new RadiusBlockBlobFeature(BlockStateRadiusFeatureConfig.CODEC));
+  public static final Feature<TwoBlockStateRadiusFeatureConfig> ROCK_ORE = register("big_rock_ore", new RadiusTwoBlockBlobFeature(TwoBlockStateRadiusFeatureConfig.CODEC));
   public static final Feature<WeightedBlockStateFeatureConfig> WEIGHTED_LAKE = register("weighted_lake", new WeightedLakesFeature(WeightedBlockStateFeatureConfig.CODEC));
 
   private static <T extends IFeatureConfig> Feature<T> register(String name, Feature<T> feature) {

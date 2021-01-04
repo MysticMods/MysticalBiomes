@@ -9,6 +9,7 @@ import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.items.ItemStackHandler;
 import noobanidus.libs.noobutil.config.BiomeConfig;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
 import noobanidus.mods.mysticalbiomes.biome.BiomeVariants;
@@ -30,10 +31,14 @@ public class ModBiomes {
   public static Biome PETRIFIED_WASTES = register("petrified_wastes", PetrifiedWastesBiome.PETRIFIED_WASTES);
   public static Biome PETRIFIED_BEACH = register("petrified_beach", PetrifiedWastesBiome.PETRIFIED_BEACH);
   public static Biome PETRIFIED_RIVER = register("petrified_river", PetrifiedWastesBiome.PETRIFIED_RIVER);
+  public static Biome PETRIFIED_EDGE = register("petrified_edge", PetrifiedWastesBiome.PETRIFIED_EDGE);
+  public static Biome PETRIFIED_CENTER = register("petrified_center", PetrifiedWastesBiome.PETRIFIED_CENTER);
 
   static {
     BiomeVariants.addReplacement(k(PETRIFIED_WASTES), k(PETRIFIED_RIVER), 1, BiomeVariants.VariantType.RIVER);
     BiomeVariants.addReplacement(k(PETRIFIED_WASTES), k(PETRIFIED_BEACH), 1, BiomeVariants.VariantType.SHORE);
+    BiomeVariants.addReplacement(k(PETRIFIED_WASTES), k(PETRIFIED_EDGE), 1, BiomeVariants.VariantType.EDGE);
+    BiomeVariants.addReplacement(k(PETRIFIED_WASTES), k(PETRIFIED_CENTER), 1, BiomeVariants.VariantType.CENTER);
     BiomeVariants.addReplacement(k(SPROUT_FOREST), k(SPROUT_RIVER), 1, BiomeVariants.VariantType.RIVER);
     BiomeVariants.addReplacement(k(SPROUT_FOREST), k(SPROUT_BEACH), 1, BiomeVariants.VariantType.SHORE);
   }

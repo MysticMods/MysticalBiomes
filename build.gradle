@@ -87,7 +87,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
             properties 'mixin.env.disableRefMap': 'true'
             arg "-mixin.config=mysticalbiomes.mixins.json"
-            args '--mod', 'mysticalbiomes', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'mysticalbiomes', '--all', '--output', file('src/generated/resources/'), '--existing', sourceSets.main.resources.srcDirs[0]
 
             mods {
                 mysticalbiomes {

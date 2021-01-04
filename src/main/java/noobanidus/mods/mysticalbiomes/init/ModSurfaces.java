@@ -18,6 +18,7 @@ public class ModSurfaces {
   private static Set<SurfaceBuilder<?>> SURFACES = new HashSet<>();
 
   public static SurfaceBuilder<SupplierSurfaceBuilderConfig> SMOOTH_STONE_SURFACE = register("smooth_stone", new SupplierDefaultSurfaceBuilder(SupplierSurfaceBuilderConfig.CODEC));
+  public static SurfaceBuilder<SupplierSurfaceBuilderConfig> PETRIFIED_LAKE_SURFACE = register("petrified_lake", new SupplierDefaultSurfaceBuilder(SupplierSurfaceBuilderConfig.CODEC));
 
   private static <T extends ISurfaceBuilderConfig> SurfaceBuilder<T> register(String name, SurfaceBuilder<T> type) {
     ResourceLocation rl = new ResourceLocation(MysticalBiomes.MODID, name);
