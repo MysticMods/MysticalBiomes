@@ -41,7 +41,6 @@ public class SproutForestBiome {
           DefaultBiomeFeatures::withNoiseTallGrass,
           DefaultBiomeFeatures::withPlainGrassVegetation,
           DefaultBiomeFeatures::withAllForestFlowerGeneration,
-          DefaultBiomeFeatures::withExtraGoldOre,
           DefaultBiomeFeatures::withFossils,
           DefaultBiomeFeatures::withFrozenTopLayer
       )
@@ -49,6 +48,7 @@ public class SproutForestBiome {
       .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_MELON)
       .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_PUMPKIN)
       .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.SPREAD_OAK_TREES)
+      .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.SMALL_SURFACE_GOLD)
       .addStructureFeature(StructureFeatures.RUINED_PORTAL)
       .addSpawnFunction(DefaultBiomeFeatures::withBatsAndHostiles));
 
