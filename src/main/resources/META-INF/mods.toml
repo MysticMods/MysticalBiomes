@@ -7,7 +7,7 @@ modId="mysticalbiomes"
 version="${file.jarVersion}" 
 displayName="Mystical Biomes"
 displayURL="https://minecraft.curseforge.com/projects/mystical-biomes"
-credits="Prospector, Traverse & Terraform Team for inspiration"
+credits="The Terraform Team"
 authors="Noobanidus"
 description='''
 A collection of mystical biomes to improve your world!
