@@ -21,7 +21,9 @@ public class ConfiguredStructures {
   private static StructureFeature<?, ?> register(String id, @Nullable Structure<?> structure, StructureFeature<?, ?> feature) {
     ResourceLocation rl = new ResourceLocation(MysticalBiomes.MODID, id);
 
-    return Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, rl, feature);
+    StructureFeature<?, ?> result = Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, rl, feature);
+    CONFIGURED_STRUCTURES.put(structure, feature);
+    return result;
   }
 
   public static void registerStructures () {
