@@ -15,6 +15,7 @@ import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placement.*;
+import noobanidus.libs.noobutil.registry.ConfiguredRegistry;
 import noobanidus.libs.noobutil.types.LazyStateSupplier;
 import noobanidus.libs.noobutil.world.gen.config.*;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
@@ -24,6 +25,8 @@ import noobanidus.mods.mysticalbiomes.world.placer.ColumnBasePlacer;
 import java.util.Arrays;
 
 public class ConfiguredFeatures {
+  public static final ConfiguredRegistry<ConfiguredFeature<?, ?>> REGISTRY = new ConfiguredRegistry<>(MysticalBiomes.MODID, WorldGenRegistries.CONFIGURED_FEATURE);
+
   private static ConfiguredFeature<?, ?> EMPTY = register("empty", ModFeatures.EMPTY.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
 
   private static ConfiguredFeature<?, ?> STANDARD_BOULDER = register("standard_boulder", ModFeatures.BIG_ROCK.withConfiguration(new BlockStateRadiusFeatureConfig(new SimpleBlockStateProvider(Blocks.COBBLESTONE.getDefaultState()), 2)));
@@ -88,7 +91,7 @@ public class ConfiguredFeatures {
    public static final ConfiguredFeature<?, ?> SMALL_SURFACE_GOLD = register("small_surface_gold", Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, Blocks.GOLD_ORE.getDefaultState(), 4)).range(48).square().func_242731_b(8));
 
   private static ConfiguredFeature<?, ?> register(String id, ConfiguredFeature<?, ?> feature) {
-    return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(MysticalBiomes.MODID, id), feature);
+    return REGISTRY.register(id, feature);
   }
 
   public static void load() {

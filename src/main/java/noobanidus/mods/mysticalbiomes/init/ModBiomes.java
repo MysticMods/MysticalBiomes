@@ -69,7 +69,9 @@ public class ModBiomes {
   @SubscribeEvent
   public static void register(RegistryEvent.Register<Biome> event) {
     event.getRegistry().registerAll(BIOMES.toArray(new Biome[0]));
+  }
 
+  public static void registration () {
     register(ModBiomes.SPROUT_FOREST, ConfigManager.SPROUT_PLAINS, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.OVERWORLD, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.LUSH);
 
     register(ModBiomes.PETRIFIED_WASTES, ConfigManager.STONE_WASTES, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.OVERWORLD, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.WASTELAND);
