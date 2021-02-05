@@ -19,12 +19,12 @@ public class MixinEdgeBiomeLayer {
     RegistryKey<Biome> key = BiomeRegistry.getKeyFromID(center);
 
     RegistryKey<Biome> centerKey = BiomeVariants.pickReplacement(context, key, BiomeVariants.VariantType.CENTER);
-    if (centerKey != null && surrounded(north, west, south, east, center)) {
+    if (centerKey != null && mbSurrounded(north, west, south, east, center)) {
       info.setReturnValue(Reference.getBiomeID(centerKey));
     }
   }
 
-  private static boolean surrounded(int neighbor1, int neighbor2, int neighbor3, int neighbor4, int biome) {
+  private static boolean mbSurrounded(int neighbor1, int neighbor2, int neighbor3, int neighbor4, int biome) {
     return neighbor1 == biome && neighbor2 == biome && neighbor3 == biome && neighbor4 == biome;
   }
 }

@@ -21,30 +21,30 @@ public class MixinShoreLayer {
   private void apply(INoiseRandom context, int north, int west, int south, int east, int center, CallbackInfoReturnable<Integer> info) {
     RegistryKey<Biome> key = BiomeRegistry.getKeyFromID(center);
     RegistryKey<Biome> shoreKey = BiomeVariants.pickReplacement(context, key, BiomeVariants.VariantType.SHORE);
-    if (shoreKey != null && neighboursOcean(north, east, south, west)) {
+    if (shoreKey != null && mbNeighboursOcean(north, east, south, west)) {
       info.setReturnValue(Reference.getBiomeID(shoreKey));
       return;
     }
     RegistryKey<Biome> edgeKey = BiomeVariants.pickReplacement(context, key, BiomeVariants.VariantType.EDGE);
-    if (edgeKey != null && isEdge(north, east, south, west, center)) {
+    if (edgeKey != null && mbIsEdge(north, east, south, west, center)) {
       info.setReturnValue(Reference.getBiomeID(edgeKey));
     }
   }
 
-  private static boolean neighboursOcean(int north, int east, int south, int west) {
-    return isOceanBiome(north) || isOceanBiome(east) || isOceanBiome(south) || isOceanBiome(west);
+  private static boolean mbNeighboursOcean(int north, int east, int south, int west) {
+    return mbIsOceanBiome(north) || mbIsOceanBiome(east) || mbIsOceanBiome(south) || mbIsOceanBiome(west);
   }
 
-  private static boolean isOceanBiome(int id) {
+  private static boolean mbIsOceanBiome(int id) {
     RegistryKey<Biome> key = BiomeRegistry.getKeyFromID(id);
     return BiomeDictionary.getTypes(key).contains(BiomeDictionary.Type.OCEAN);
   }
 
-  private static boolean isEdge(int north, int east, int south, int west, int center) {
-    return areDissimilar(center, north) || areDissimilar(center, east) || areDissimilar(center, south) || areDissimilar(center, west);
+  private static boolean mbIsEdge(int north, int east, int south, int west, int center) {
+    return mbAreDissimilar(center, north) || mbAreDissimilar(center, east) || mbAreDissimilar(center, south) || mbAreDissimilar(center, west);
   }
 
-  private static boolean areDissimilar(int mainBiomeId, int secondaryBiomeId) {
+  private static boolean mbAreDissimilar(int mainBiomeId, int secondaryBiomeId) {
     if (mainBiomeId == secondaryBiomeId) { // for efficiency, determine if the ids are equal first
       return false;
     } else {
