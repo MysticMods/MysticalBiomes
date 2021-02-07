@@ -19,6 +19,7 @@ public class ConfigManager {
 
   public static BiomeConfig SPROUT_PLAINS = config.build("sprout_plains", 5);
   public static BiomeConfig STONE_WASTES = config.build("stone_wastes", 2);
+  public static BiomeConfig UNCANNY_FOREST = config.build("uncanny_forest", 1);
 
   public static ForgeConfigSpec COMMON_CONFIG;
 
