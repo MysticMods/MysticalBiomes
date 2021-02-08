@@ -4,20 +4,22 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.CarvedPumpkinBlock;
 import net.minecraft.block.CoralPlantBlock;
 import net.minecraft.block.HugeMushroomBlock;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.util.Direction;
 import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.gen.blockplacer.ColumnBlockPlacer;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.MegaPineFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.SpruceFoliagePlacer;
-import net.minecraft.world.gen.placement.*;
-import net.minecraft.world.gen.treedecorator.AlterGroundTreeDecorator;
+import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
+import net.minecraft.world.gen.placement.ChanceConfig;
+import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.trunkplacer.GiantTrunkPlacer;
 import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 import noobanidus.libs.noobutil.registry.ConfiguredRegistry;
@@ -27,6 +29,7 @@ import noobanidus.mods.mysticalbiomes.MysticalBiomes;
 import noobanidus.mods.mysticalbiomes.world.SupplierBlockStateProvider;
 import noobanidus.mods.mysticalbiomes.world.placer.ColumnBasePlacer;
 
+import java.sql.Blob;
 import java.util.Arrays;
 
 public class ConfiguredFeatures {
@@ -93,13 +96,28 @@ public class ConfiguredFeatures {
 
   public static final ConfiguredFeature<?, ?> SURFACE_FOSSIL = register("surface_fossil", ModFeatures.SURFACE_FOSSIL.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).chance(75));
 
-   public static final ConfiguredFeature<?, ?> SMALL_SURFACE_GOLD = register("small_surface_gold", Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, Blocks.GOLD_ORE.getDefaultState(), 4)).range(48).square().func_242731_b(8));
+  public static final ConfiguredFeature<?, ?> SMALL_SURFACE_GOLD = register("small_surface_gold", Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, Blocks.GOLD_ORE.getDefaultState(), 4)).range(48).square().func_242731_b(8));
 
-   public static final ConfiguredFeature<?, ?> MEGA_DARK = register("spooky_mega_dark_tree", Feature.TREE.withConfiguration((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.DARK_OAK_LOG.getDefaultState()), new SimpleBlockStateProvider(Blocks.DARK_OAK_LEAVES.getDefaultState()), new MegaPineFoliagePlacer(FeatureSpread.func_242252_a(0), FeatureSpread.func_242252_a(0), FeatureSpread.func_242253_a(13, 4)), new GiantTrunkPlacer(13, 2, 14), new TwoLayerFeature(1, 1, 2))).build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.9F, 1))));
+  public static final ConfiguredFeature<?, ?> MEGA_DARK = register("spooky_mega_dark_tree", Feature.TREE.withConfiguration((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.DARK_OAK_LOG.getDefaultState()), new SimpleBlockStateProvider(Blocks.DARK_OAK_LEAVES.getDefaultState()), new MegaPineFoliagePlacer(FeatureSpread.func_242252_a(0), FeatureSpread.func_242252_a(0), FeatureSpread.func_242253_a(9, 0)), new GiantTrunkPlacer(9, 2, 4), new TwoLayerFeature(1, 1, 2))).build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(1, 0.4F, 1))));
 
-   public static final ConfiguredFeature<?, ?> DARK_TREE = register("dark_tree", Feature.TREE.withConfiguration((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.DARK_OAK_LOG.getDefaultState()), new SimpleBlockStateProvider(Blocks.DARK_OAK_LEAVES.getDefaultState()), new SpruceFoliagePlacer(FeatureSpread.func_242253_a(3, 2), FeatureSpread.func_242253_a(1, 2), FeatureSpread.func_242253_a(1, 1)), new StraightTrunkPlacer(9, 3, 0), new TwoLayerFeature(2, 0, 1))).setIgnoreVines().build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(5, 0.1F, 1))));
+  public static final ConfiguredFeature<?, ?> DARK_TREE = register("dark_tree", Feature.TREE.withConfiguration((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.DARK_OAK_LOG.getDefaultState()), new SimpleBlockStateProvider(Blocks.DARK_OAK_LEAVES.getDefaultState()), new SpruceFoliagePlacer(FeatureSpread.func_242253_a(2, 1), FeatureSpread.func_242253_a(1, 2), FeatureSpread.func_242253_a(4, 0)), new StraightTrunkPlacer(6, 3, 0), new TwoLayerFeature(2, 0, 1))).setIgnoreVines().build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(11, 1.0F, 2))));
 
-  public static final ConfiguredFeature<?, ?> PATCH_JACK_O_LANTERNS = register("patch_jack_o_lantern", Feature.RANDOM_PATCH.withConfiguration((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.JACK_O_LANTERN.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(2).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).replaceable().func_227317_b_().build()).withPlacement(Features.Placements.PATCH_PLACEMENT));
+  private static WeightedBlockStateProvider PUMPKINS = null;
+
+  public static WeightedBlockStateProvider getPumpkins() {
+    if (PUMPKINS == null) {
+      PUMPKINS = new WeightedBlockStateProvider();
+      PUMPKINS.addWeightedBlockstate(Blocks.JACK_O_LANTERN.getDefaultState().with(CarvedPumpkinBlock.FACING, Direction.NORTH), 1);
+      PUMPKINS.addWeightedBlockstate(Blocks.JACK_O_LANTERN.getDefaultState().with(CarvedPumpkinBlock.FACING, Direction.EAST), 1);
+      PUMPKINS.addWeightedBlockstate(Blocks.JACK_O_LANTERN.getDefaultState().with(CarvedPumpkinBlock.FACING, Direction.WEST), 1);
+      PUMPKINS.addWeightedBlockstate(Blocks.JACK_O_LANTERN.getDefaultState().with(CarvedPumpkinBlock.FACING, Direction.SOUTH), 1);
+    }
+    return PUMPKINS;
+  }
+
+  public static final ConfiguredFeature<?, ?> LANTERNS = register("lantern", Feature.TREE.withConfiguration((new BaseTreeFeatureConfig.Builder(getPumpkins(), new SimpleBlockStateProvider(Blocks.AIR.getDefaultState()), new BlobFoliagePlacer(FeatureSpread.func_242253_a(1, 1), FeatureSpread.func_242253_a(1, 1), 1), new StraightTrunkPlacer(1, 0, 0), new TwoLayerFeature(2, 0, 1))).setIgnoreVines().build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(2, 0.8F, 1))));
+
+/*  public static final ConfiguredFeature<?, ?> PATCH_JACK_O_LANTERNS = register("patch_jack_o_lantern", Feature.RANDOM_PATCH.withConfiguration((new BlockClusterFeatureConfig.Builder(getPumpkins(), SimpleBlockPlacer.PLACER)).*//*tries(16).*//*whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).replaceable().func_227317_b_().build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(1, 0.5F, 1))));*/
 
   private static ConfiguredFeature<?, ?> register(String id, ConfiguredFeature<?, ?> feature) {
     return REGISTRY.register(id, feature);

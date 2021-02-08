@@ -3,6 +3,7 @@ package noobanidus.mods.mysticalbiomes.biome;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.structure.StructureFeatures;
 import noobanidus.libs.noobutil.world.gen.BiomeBuilder;
 import noobanidus.mods.mysticalbiomes.init.ConfiguredFeatures;
@@ -22,9 +23,12 @@ public class UncannyForestBiome {
           .setWaterFogColor(0x817ce6)
           .setFogColor(0x5f42ff)
       )
+      .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.LANTERNS)
+      .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_GRASS_PLAIN)
       .addDefaultFeatureFunctions(
           DefaultBiomeFeatures::withCavesAndCanyons,
           DefaultBiomeFeatures::withStrongholdAndMineshaft, // part of addStructures
+          // TODO: NO LAVA LAKES
           DefaultBiomeFeatures::withLavaAndWaterLakes, // addLakes
           DefaultBiomeFeatures::withMonsterRoom, // addMonsterRooms
           DefaultBiomeFeatures::withCommonOverworldBlocks, // addStoneVariants
@@ -33,8 +37,6 @@ public class UncannyForestBiome {
           DefaultBiomeFeatures::withNormalMushroomGeneration,
           DefaultBiomeFeatures::withNormalGrassPatch,
           DefaultBiomeFeatures::withNoiseTallGrass,
-          DefaultBiomeFeatures::withPlainGrassVegetation,
-          DefaultBiomeFeatures::withAllForestFlowerGeneration,
           DefaultBiomeFeatures::withFossils,
           DefaultBiomeFeatures::withFrozenTopLayer
       )
