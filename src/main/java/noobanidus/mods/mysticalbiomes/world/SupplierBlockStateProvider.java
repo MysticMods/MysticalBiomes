@@ -3,7 +3,7 @@ package noobanidus.mods.mysticalbiomes.world;
 import com.mojang.serialization.Codec;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.blockstateprovider.BlockStateProviderType;
-import noobanidus.libs.noobutil.types.AbstractSupplierBockStateProvider;
+import noobanidus.libs.noobutil.world.gen.provider.AbstractSupplierBockStateProvider;
 import noobanidus.mods.mysticalbiomes.init.ModTypes;
 
 public class SupplierBlockStateProvider extends AbstractSupplierBockStateProvider {

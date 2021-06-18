@@ -12,7 +12,7 @@ buildscript {
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
         maven {
-            url='https://dist.creeper.host/Sponge/maven'
+            url='https://repo.spongepowered.org/maven'
         }
     }
     dependencies {
@@ -33,7 +33,7 @@ version = "${minecraft_version}-${mod_version}"
 if (System.getenv('BUILD_NUMBER') != null) {
     version = "${minecraft_version}-${mod_version}-" + System.getenv('BUILD_NUMBER')
 }
-group = 'epicsquid.mysticalbiomes' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'noobanidus.mods.mysticalbiomes' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'mysticalbiomes'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
@@ -114,12 +114,7 @@ repositories {
         name = "Progwml6 maven"
         url = "https://dvs1.progwml6.com/files/maven/"
     }
-    maven {
-        name = "JER"
-        url = "https://dl.bintray.com/way2muchnoise/dev"
-    }
     maven {url = 'https://repo.spongepowered.org/maven/'}
-
     maven {url = 'https://dist.creeper.host/Sponge/maven'}
     jcenter()
     mavenCentral()
@@ -136,18 +131,18 @@ dependencies {
     implementation fg.deobf(registrate)
     shade registrate
 
-    def noobutil = "noobanidus.libs:noobutil:${minecraft_version}-${noobutil_version}"
+    def noobutil = "noobanidus.libs:noobutil:${noobutil_version}"
     implementation fg.deobf(noobutil)
     shade noobutil
 
-    compile fg.deobf(project.dependencies.create("epicsquid.mysticalworld:mysticalworld:${mysticalworld_version}-${mysticalworld_build}") {
+    compile fg.deobf(project.dependencies.create("mysticmods.mysticalworld:mysticalworld-${minecraft_version}:${mysticalworld_version}.${mysticalworld_build}") {
         transitive = false
     })
 
     compile fg.deobf("mezz.jei:jei-${jei_version}")
     compile fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
-    compile 'org.spongepowered:mixin:0.8'
-    annotationProcessor 'org.spongepowered:mixin:0.8:processor'
+    compile 'org.spongepowered:mixin:0.8.2'
+    annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
 }
 
 sourceSets.main.resources {
@@ -171,6 +166,7 @@ jar {
 
 shadowJar {
     configurations = [project.configurations.shade]
+
     relocate 'com.tterrag.registrate', 'noobanidus.mods.mysticalbiomes.repack.registrate'
     relocate 'noobanidus.libs.noobutil', 'noobanidus.libs.repack_mysticalbiomes.noobutil'
     classifier ''
@@ -186,4 +182,30 @@ build.dependsOn reobfShadowJar
 
 mixin {
     add sourceSets.main, "mysticalbiomes.refmap.json"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId project.group
+            artifactId project.archivesBaseName
+            version project.version
+            from components.java
+
+            artifact shadowJar {
+            }
+
+            pom.withXml {
+                asNode().dependencies.dependency.each {
+                    dep -> dep.parent().remove(dep)
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            url "file:///" + System.getenv("local_maven")
+
+        }
+    }
 }

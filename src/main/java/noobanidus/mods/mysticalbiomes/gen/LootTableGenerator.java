@@ -1,9 +1,8 @@
 package noobanidus.mods.mysticalbiomes.gen;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
-import epicsquid.mysticalworld.init.ModItems;
+import mysticmods.mysticalworld.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
 import net.minecraft.item.Items;

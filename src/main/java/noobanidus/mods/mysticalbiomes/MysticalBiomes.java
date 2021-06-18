@@ -1,21 +1,16 @@
 package noobanidus.mods.mysticalbiomes;
 
-import epicsquid.mysticalworld.setup.ClientInit;
-import net.minecraft.data.DataGenerator;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
-import noobanidus.libs.noobutil.registrate.CustomRegistrate;
 import noobanidus.libs.noobutil.command.GenDataCommand;
+import noobanidus.libs.noobutil.registrate.CustomRegistrate;
 import noobanidus.mods.mysticalbiomes.config.ConfigManager;
 import noobanidus.mods.mysticalbiomes.gen.LootTableGenerator;
 import noobanidus.mods.mysticalbiomes.setup.ModSetup;
@@ -38,14 +33,13 @@ public class MysticalBiomes {
     bus.addListener(this::onDataGenerate);
 
     MinecraftForge.EVENT_BUS.addListener(this::commandRegisterEvent);
-    DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ClientInit::init);
   }
 
   public void commandRegisterEvent(RegisterCommandsEvent event) {
     GenDataCommand.dataGenCommand(event.getDispatcher());
   }
 
-  public void onDataGenerate (GatherDataEvent event) {
+  public void onDataGenerate(GatherDataEvent event) {
     if (event.includeServer()) {
       event.getGenerator().addProvider(new LootTableGenerator(event.getGenerator()));
     }

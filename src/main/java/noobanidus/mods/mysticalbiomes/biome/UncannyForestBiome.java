@@ -41,6 +41,7 @@ public class UncannyForestBiome {
           DefaultBiomeFeatures::withFrozenTopLayer
       )
       .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.DARK_TREE)
+      // MEGA TREES TOO SHORT
       .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.MEGA_DARK)
       .addStructureFeature(StructureFeatures.RUINED_PORTAL)
       .addSpawnFunction(DefaultBiomeFeatures::withBatsAndHostiles));
@@ -48,7 +49,7 @@ public class UncannyForestBiome {
   public static Biome UNCANNY_FOREST = UNCANNY_TEMPLATE.builder()
       .category(Biome.Category.FOREST)
       .depth(0.05F)
-      .scale(0.01F)
+      .scale(-0.09F)
       .build();
 
 /*  public static Biome SPROUT_BEACH = SPROUT_TEMPLATE.builder()

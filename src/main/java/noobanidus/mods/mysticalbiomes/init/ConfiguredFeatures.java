@@ -77,7 +77,7 @@ public class ConfiguredFeatures {
 
   public static final ConfiguredFeature<?, ?> LARGE_SOFT_STONE_TREE = register("large_soft_stone_tree", ModFeatures.SUPPLIER_RANDOM_PATCH.withConfiguration((new SupplierBlockClusterFeatureConfig.Builder(new SupplierBlockStateProvider("mysticalworld", "soft_stone"), new ColumnBlockPlacer(5, 15))).tries(12).noProjection().whitelist(Sets.newHashSet(new LazyStateSupplier("mysticalworld", "soft_stone"))).build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.6F, 1))));
 
-  public static final ConfiguredFeature<?, ?> REGULAR_LAVA = register("regular_lake_lava", Feature.LAKE.withConfiguration(new BlockStateFeatureConfig(Blocks.LAVA.getDefaultState())).withPlacement(Placement.LAVA_LAKE.configure(new ChanceConfig(30))));
+  public static final ConfiguredFeature<?, ?> REGULAR_LAVA = register("regular_lake_lava", Feature.LAKE.withConfiguration(new BlockStateFeatureConfig(Blocks.LAVA.getDefaultState())).withPlacement(ModPlacers.LAVA_CENTER.configure(new ChanceConfig(30))));
 
   public static final ConfiguredFeature<?, ?> CORAL_LAKE = register("coral_lake", ModFeatures.WEIGHTED_LAKE.withConfiguration(new WeightedBlockStateFeatureConfig(new WeightedBlockStateProvider()
       .addWeightedBlockstate(Blocks.DEAD_BRAIN_CORAL_BLOCK.getDefaultState(), 20)
@@ -90,7 +90,8 @@ public class ConfiguredFeatures {
       .addWeightedBlockstate(Blocks.DEAD_BUBBLE_CORAL.getDefaultState().with(CoralPlantBlock.WATERLOGGED, true), 2)
       .addWeightedBlockstate(Blocks.DEAD_FIRE_CORAL.getDefaultState().with(CoralPlantBlock.WATERLOGGED, true), 2)
       .addWeightedBlockstate(Blocks.DEAD_HORN_CORAL.getDefaultState().with(CoralPlantBlock.WATERLOGGED, true), 2)
-      .addWeightedBlockstate(Blocks.BONE_BLOCK.getDefaultState(), 8))).withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(5))));
+      .addWeightedBlockstate(Blocks.BONE_BLOCK.getDefaultState(), 8))).withPlacement(ModPlacers.WATER_CENTER.configure(new ChanceConfig(5))));
+
 
   public static final ConfiguredFeature<?, ?> PATCH_STONEPETAL = register("patch_stonepetal", ModFeatures.SUPPLIER_RANDOM_PATCH.withConfiguration((new SupplierBlockClusterFeatureConfig.Builder(new SupplierBlockStateProvider("mysticalworld", "stonepetal"), SimpleBlockPlacer.PLACER)).tries(18).build()).withPlacement(Features.Placements.VEGETATION_PLACEMENT).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).func_242731_b(2));
 
