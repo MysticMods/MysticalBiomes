@@ -4,7 +4,7 @@ issueTrackerURL="https://github.com/MysticMods/MysticalBiomes/issues"
 license="https://github.com/MysticMods/MysticalBiomes/blob/master/LICENSE"
 [[mods]] 
 modId="mysticalbiomes" 
-version="${file.jarVersion}" 
+version="${version}"
 displayName="Mystical Biomes"
 displayURL="https://minecraft.curseforge.com/projects/mystical-biomes"
 credits="The Terraform Team"
