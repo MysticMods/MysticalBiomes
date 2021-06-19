@@ -1,4 +1,4 @@
-package noobanidus.mods.mysticalbiomes.biome;
+/*package noobanidus.mods.mysticalbiomes.biome;
 
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
@@ -52,7 +52,7 @@ public class UncannyForestBiome {
       .scale(-0.09F)
       .build();
 
-/*  public static Biome SPROUT_BEACH = SPROUT_TEMPLATE.builder()
+*//*  public static Biome SPROUT_BEACH = SPROUT_TEMPLATE.builder()
       .category(Biome.Category.BEACH)
       .depth(0.1F)
       .scale(0.2F)
@@ -65,5 +65,5 @@ public class UncannyForestBiome {
       )
       .depth(-0.5f)
       .scale(0.0f)
-      .build();*/
-}
+      .build();*//*
+}*/

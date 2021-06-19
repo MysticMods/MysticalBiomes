@@ -9,13 +9,11 @@ import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.items.ItemStackHandler;
 import noobanidus.libs.noobutil.config.BiomeConfig;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
 import noobanidus.mods.mysticalbiomes.biome.BiomeVariants;
 import noobanidus.mods.mysticalbiomes.biome.PetrifiedWastesBiome;
 import noobanidus.mods.mysticalbiomes.biome.SproutForestBiome;
-import noobanidus.mods.mysticalbiomes.biome.UncannyForestBiome;
 import noobanidus.mods.mysticalbiomes.config.ConfigManager;
 
 import java.util.HashSet;
@@ -34,7 +32,7 @@ public class ModBiomes {
   public static Biome PETRIFIED_RIVER = register("petrified_river", PetrifiedWastesBiome.PETRIFIED_RIVER);
   public static Biome PETRIFIED_EDGE = register("petrified_edge", PetrifiedWastesBiome.PETRIFIED_EDGE);
   public static Biome PETRIFIED_CENTER = register("petrified_center", PetrifiedWastesBiome.PETRIFIED_CENTER);
-  public static Biome UNCANNY_FOREST = register("uncanny_forest", UncannyForestBiome.UNCANNY_FOREST);
+  /*  public static Biome UNCANNY_FOREST = register("uncanny_forest", UncannyForestBiome.UNCANNY_FOREST);*/
 
   static {
     BiomeVariants.addReplacement(k(PETRIFIED_WASTES), k(PETRIFIED_RIVER), 1, BiomeVariants.VariantType.RIVER);
@@ -73,11 +71,11 @@ public class ModBiomes {
     event.getRegistry().registerAll(BIOMES.toArray(new Biome[0]));
   }
 
-  public static void registration () {
+  public static void registration() {
     register(ModBiomes.SPROUT_FOREST, ConfigManager.SPROUT_PLAINS, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.OVERWORLD, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.MAGICAL);
 
     register(ModBiomes.PETRIFIED_WASTES, ConfigManager.STONE_WASTES, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.OVERWORLD, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.WASTELAND);
 
-    register(ModBiomes.UNCANNY_FOREST, ConfigManager.UNCANNY_FOREST, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.OVERWORLD, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.MAGICAL);
+    /*    register(ModBiomes.UNCANNY_FOREST, ConfigManager.UNCANNY_FOREST, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.OVERWORLD, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.MAGICAL);*/
   }
 }
