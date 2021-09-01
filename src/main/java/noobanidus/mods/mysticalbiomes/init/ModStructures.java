@@ -12,7 +12,10 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
+import noobanidus.mods.mysticalbiomes.world.structures.DarkHutStructure;
+import noobanidus.mods.mysticalbiomes.world.structures.HengeStructure;
 import noobanidus.mods.mysticalbiomes.world.structures.MushroomHutStructure;
+import noobanidus.mods.mysticalbiomes.world.structures.TotemStructure;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,6 +25,7 @@ public class ModStructures {
   private static Set<Structure<?>> STRUCTURES = new HashSet<>();
 
   public static final Structure<NoFeatureConfig> MUSHROOM_HUT = register("mushroom_hut", new MushroomHutStructure(NoFeatureConfig.field_236558_a_));
+  public static final Structure<NoFeatureConfig> HENGE = register("henge", new HengeStructure(NoFeatureConfig.field_236558_a_));
 
   private static <T extends IFeatureConfig> Structure<T> register(String name, Structure<T> feature) {
     ResourceLocation rl = new ResourceLocation(MysticalBiomes.MODID, name);
@@ -37,6 +41,7 @@ public class ModStructures {
 
   public static void setupStructures() {
     setupStructure(MUSHROOM_HUT, new StructureSeparationSettings(10, 5, 1234567890), true);
+    setupStructure(HENGE, new StructureSeparationSettings(40, 20, 11887642), true);
   }
 
   public static <F extends Structure<?>> void setupStructure(F structure, StructureSeparationSettings structureSeparationSettings, boolean transformSurroundingLand) {

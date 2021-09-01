@@ -29,26 +29,29 @@ import noobanidus.mods.mysticalbiomes.MysticalBiomes;
 import noobanidus.mods.mysticalbiomes.world.SupplierBlockStateProvider;
 import noobanidus.mods.mysticalbiomes.world.placer.ColumnBasePlacer;
 
-import java.sql.Blob;
 import java.util.Arrays;
 
 public class ConfiguredFeatures {
   public static final ConfiguredRegistry<ConfiguredFeature<?, ?>> REGISTRY = new ConfiguredRegistry<>(MysticalBiomes.MODID, WorldGenRegistries.CONFIGURED_FEATURE);
 
-  private static ConfiguredFeature<?, ?> EMPTY = register("empty", ModFeatures.EMPTY.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
+  private static final ConfiguredFeature<?, ?> EMPTY = register("empty", ModFeatures.EMPTY.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
 
-  private static ConfiguredFeature<?, ?> STANDARD_BOULDER = register("standard_boulder", ModFeatures.BIG_ROCK.withConfiguration(new BlockStateRadiusFeatureConfig(new SimpleBlockStateProvider(Blocks.COBBLESTONE.getDefaultState()), 2)));
-  private static ConfiguredFeature<?, ?> ORE_BOULDER = register("ore_boulder", ModFeatures.ROCK_ORE.withConfiguration(new TwoBlockStateRadiusFeatureConfig(new SimpleBlockStateProvider(Blocks.COBBLESTONE.getDefaultState()),
+  private static final ConfiguredFeature<?, ?> STANDARD_BOULDER = register("standard_boulder", ModFeatures.BIG_ROCK.withConfiguration(new BlockStateRadiusFeatureConfig(new SimpleBlockStateProvider(Blocks.COBBLESTONE.getDefaultState()), 2)));
+  private static final ConfiguredFeature<?, ?> ORE_BOULDER = register("ore_boulder", ModFeatures.ROCK_ORE.withConfiguration(new TwoBlockStateRadiusFeatureConfig(new SimpleBlockStateProvider(Blocks.COBBLESTONE.getDefaultState()),
       new WeightedBlockStateProvider()
           .addWeightedBlockstate(Blocks.IRON_ORE.getDefaultState(), 3)
           .addWeightedBlockstate(Blocks.COAL_ORE.getDefaultState(), 30)
           .addWeightedBlockstate(Blocks.GOLD_ORE.getDefaultState(), 1)
           .addWeightedBlockstate(Blocks.COBBLESTONE.getDefaultState(), 10),
       2)));
-  public static ConfiguredFeature<?, ?> BOULDER_FEATURE = register("boulder", Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(ORE_BOULDER.withChance(0.4f), STANDARD_BOULDER.withChance(0.1f)), EMPTY))
+  public static final ConfiguredFeature<?, ?> BOULDER_FEATURE = register("boulder", Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(ORE_BOULDER.withChance(0.4f), STANDARD_BOULDER.withChance(0.1f)), EMPTY))
       .withPlacement(Features.Placements.PATCH_PLACEMENT)); // HEIGHTMAP_PLACEMENT).func_242732_c(1));
 
-  public static ConfiguredFeature<?, ?> ORE_WEIGHTED_BOULDER_FEATURE = register("ore_weighted_boulder", Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(ORE_BOULDER.withChance(0.8f), STANDARD_BOULDER.withChance(0.1f)), EMPTY))
+  public static final ConfiguredFeature<?, ?> UNCANNY_MUSHROOMS_BROWN = register("uncanny_mushrooms_brown", ModFeatures.SUPPLIER_RANDOM_PATCH.withConfiguration((new SupplierBlockClusterFeatureConfig.Builder(new SupplierBlockStateProvider("mysticalworld", "brown_mushroom"), SimpleBlockPlacer.PLACER)).tries(64).noProjection().build()).withPlacement(Features.Placements.PATCH_PLACEMENT).chance(1));
+
+  public static final ConfiguredFeature<?, ?> UNCANNY_MUSHROOMS_RED = register("uncanny_mushrooms_red", ModFeatures.SUPPLIER_RANDOM_PATCH.withConfiguration((new SupplierBlockClusterFeatureConfig.Builder(new SupplierBlockStateProvider("mysticalworld", "red_mushroom"), SimpleBlockPlacer.PLACER)).tries(64).noProjection().build()).withPlacement(Features.Placements.PATCH_PLACEMENT).chance(1));
+
+  public static final ConfiguredFeature<?, ?> ORE_WEIGHTED_BOULDER_FEATURE = register("ore_weighted_boulder", Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(ORE_BOULDER.withChance(0.8f), STANDARD_BOULDER.withChance(0.1f)), EMPTY))
       .withPlacement(Features.Placements.PATCH_PLACEMENT)); // HEIGHTMAP_PLACEMENT).func_242732_c(1));
 
   public static final ConfiguredFeature<?, ?> TALL_RED_MUSHROOM = register("tall_red_mushroom", ModFeatures.TALL_RED_MUSHROOM.withConfiguration(new BigMushroomFeatureConfig(new SimpleBlockStateProvider(Blocks.RED_MUSHROOM_BLOCK.getDefaultState().with(HugeMushroomBlock.DOWN, false)), new SimpleBlockStateProvider(Blocks.MUSHROOM_STEM.getDefaultState()), 2)));
@@ -59,9 +62,19 @@ public class ConfiguredFeatures {
 
   public static final ConfiguredFeature<?, ?> SPREAD_OAK_TREES = register("spread_oak_trees", Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(Features.FANCY_OAK.withChance(0.5f), Features.FANCY_OAK_BEES_0002.withChance(0.05f), Features.OAK_BEES_0002.withChance(0.3f)), Features.OAK)).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(1, 0.1F, 1))));
 
-  public static final ConfiguredFeature<?, ?> PATCH_WILD_AUBERGINE = register("patch_wild_aubergine", Feature.RANDOM_PATCH.withConfiguration((new BlockClusterFeatureConfig.Builder(new SupplierBlockStateProvider("mysticalworld", "wild_aubergine_crop"), SimpleBlockPlacer.PLACER)).tries(64).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).replaceable().func_227317_b_().build()).withPlacement(Features.Placements.PATCH_PLACEMENT));
+  public static final ConfiguredFeature<?, ?> TOTEM = register("totem", ModFeatures.TOTEM.withConfiguration(new StructureFeatureConfig(0)).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.01f, 1))));
+
+  public static final ConfiguredFeature<?, ?> STUMPS = register("stump", ModFeatures.STUMP.withConfiguration(new StructureFeatureConfig(1)).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.8f, 1))));
+
+  public static final ConfiguredFeature<?, ?> PATCH_WILD_AUBERGINE = register("patch_wild_aubergine", ModFeatures.SUPPLIER_RANDOM_PATCH.withConfiguration((new SupplierBlockClusterFeatureConfig.Builder(new SupplierBlockStateProvider("mysticalworld", "wild_aubergine"), SimpleBlockPlacer.PLACER)).tries(64).whitelist(ImmutableSet.of(new LazyStateSupplier(Blocks.GRASS_BLOCK.getDefaultState()))).replaceable().noProjection().build()).withPlacement(Features.Placements.PATCH_PLACEMENT));
+
+  public static final ConfiguredFeature<?, ?> PATCH_WILD_WART = register("patch_wild_wart", Feature.RANDOM_PATCH.withConfiguration((new BlockClusterFeatureConfig.Builder(new SupplierBlockStateProvider("mysticalworld", "wild_wart"), SimpleBlockPlacer.PLACER)).tries(32).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).replaceable().func_227317_b_().build()).withPlacement(Features.Placements.PATCH_PLACEMENT).chance(3));
 
   public static final ConfiguredFeature<?, ?> DISK_GRAVEL = register("supplier_disk_gravel", ModFeatures.SUPPLIER_DISK.withConfiguration(new SupplierSphereReplaceConfig(Blocks.GRAVEL.getDefaultState(), FeatureSpread.func_242253_a(1, 4), 1, ImmutableList.of(new LazyStateSupplier("mysticalworld", "soft_stone")))).func_242732_c(3).withPlacement(Features.Placements.SEAGRASS_DISK_PLACEMENT));
+
+  public static final ConfiguredFeature<?, ?> DISK_UNCANNY_GRAVEL = register("disk_uncanny_gravel", ModFeatures.SUPPLIER_REPLACE_DISK.withConfiguration(new SupplierSphereReplaceConfig(new LazyStateSupplier("mysticalworld", "uncanny_gravel"), FeatureSpread.func_242253_a(2, 3), 2, ImmutableList.of(new LazyStateSupplier(Blocks.DIRT.getDefaultState()), new LazyStateSupplier(Blocks.GRASS_BLOCK.getDefaultState())))).withPlacement(Features.Placements.SEAGRASS_DISK_PLACEMENT));
+
+  public static final ConfiguredFeature<?, ?> DISK_UNCANNY_SAND = register("disk_uncanny_sand", ModFeatures.SUPPLIER_REPLACE_DISK.withConfiguration(new SupplierSphereReplaceConfig(new LazyStateSupplier("mysticalworld", "uncanny_sand"), FeatureSpread.func_242253_a(2, 4), 2, ImmutableList.of(new LazyStateSupplier(Blocks.DIRT.getDefaultState()), new LazyStateSupplier(Blocks.GRASS_BLOCK.getDefaultState())))).withPlacement(Features.Placements.SEAGRASS_DISK_PLACEMENT).func_242731_b(3));
 
   public static final ConfiguredFeature<?, ?> DISK_ANDESITE = register("supplier_disk_andesite", ModFeatures.SUPPLIER_DISK.withConfiguration(new SupplierSphereReplaceConfig(Blocks.ANDESITE.getDefaultState(), FeatureSpread.func_242253_a(1, 4), 1, ImmutableList.of(new LazyStateSupplier("mysticalworld", "soft_stone")))).func_242732_c(1).withPlacement(Features.Placements.SEAGRASS_DISK_PLACEMENT));
 
@@ -91,7 +104,7 @@ public class ConfiguredFeatures {
       .addWeightedBlockstate(Blocks.DEAD_FIRE_CORAL.getDefaultState().with(CoralPlantBlock.WATERLOGGED, true), 2)
       .addWeightedBlockstate(Blocks.DEAD_HORN_CORAL.getDefaultState().with(CoralPlantBlock.WATERLOGGED, true), 2)
       .addWeightedBlockstate(Blocks.BONE_BLOCK.getDefaultState(), 8))).withPlacement(ModPlacers.WATER_CENTER.configure(new ChanceConfig(5))));
-
+  public static final ConfiguredFeature<?, ?> CENTERED_LAKE = register("centered_lake", Feature.LAKE.withConfiguration(new BlockStateFeatureConfig(Blocks.WATER.getDefaultState())).withPlacement(ModPlacers.WATER_CENTER.configure(new ChanceConfig(4))));
 
   public static final ConfiguredFeature<?, ?> PATCH_STONEPETAL = register("patch_stonepetal", ModFeatures.SUPPLIER_RANDOM_PATCH.withConfiguration((new SupplierBlockClusterFeatureConfig.Builder(new SupplierBlockStateProvider("mysticalworld", "stonepetal"), SimpleBlockPlacer.PLACER)).tries(18).build()).withPlacement(Features.Placements.VEGETATION_PLACEMENT).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).func_242731_b(2));
 
@@ -99,7 +112,7 @@ public class ConfiguredFeatures {
 
   public static final ConfiguredFeature<?, ?> SMALL_SURFACE_GOLD = register("small_surface_gold", Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, Blocks.GOLD_ORE.getDefaultState(), 4)).range(48).square().func_242731_b(8));
 
-  public static final ConfiguredFeature<?, ?> MEGA_DARK = register("spooky_mega_dark_tree", Feature.TREE.withConfiguration((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.DARK_OAK_LOG.getDefaultState()), new SimpleBlockStateProvider(Blocks.DARK_OAK_LEAVES.getDefaultState()), new MegaPineFoliagePlacer(FeatureSpread.func_242252_a(0), FeatureSpread.func_242252_a(0), FeatureSpread.func_242253_a(9, 0)), new GiantTrunkPlacer(9, 2, 4), new TwoLayerFeature(1, 1, 2))).build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(1, 0.4F, 1))));
+  public static final ConfiguredFeature<?, ?> MEGA_DARK = register("spooky_mega_dark_tree", Feature.TREE.withConfiguration((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.DARK_OAK_LOG.getDefaultState()), new SimpleBlockStateProvider(Blocks.DARK_OAK_LEAVES.getDefaultState()), new MegaPineFoliagePlacer(FeatureSpread.func_242252_a(0), FeatureSpread.func_242252_a(0), FeatureSpread.func_242253_a(9, 0)), new GiantTrunkPlacer(12, 2, 4), new TwoLayerFeature(1, 1, 2))).build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(1, 0.4F, 1))));
 
   public static final ConfiguredFeature<?, ?> DARK_TREE = register("dark_tree", Feature.TREE.withConfiguration((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.DARK_OAK_LOG.getDefaultState()), new SimpleBlockStateProvider(Blocks.DARK_OAK_LEAVES.getDefaultState()), new SpruceFoliagePlacer(FeatureSpread.func_242253_a(2, 1), FeatureSpread.func_242253_a(1, 2), FeatureSpread.func_242253_a(4, 0)), new StraightTrunkPlacer(6, 3, 0), new TwoLayerFeature(2, 0, 1))).setIgnoreVines().build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(11, 1.0F, 2))));
 
@@ -116,9 +129,7 @@ public class ConfiguredFeatures {
     return PUMPKINS;
   }
 
-  public static final ConfiguredFeature<?, ?> LANTERNS = register("lantern", Feature.TREE.withConfiguration((new BaseTreeFeatureConfig.Builder(getPumpkins(), new SimpleBlockStateProvider(Blocks.AIR.getDefaultState()), new BlobFoliagePlacer(FeatureSpread.func_242253_a(1, 1), FeatureSpread.func_242253_a(1, 1), 1), new StraightTrunkPlacer(1, 0, 0), new TwoLayerFeature(2, 0, 1))).setIgnoreVines().build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(2, 0.8F, 1))));
-
-/*  public static final ConfiguredFeature<?, ?> PATCH_JACK_O_LANTERNS = register("patch_jack_o_lantern", Feature.RANDOM_PATCH.withConfiguration((new BlockClusterFeatureConfig.Builder(getPumpkins(), SimpleBlockPlacer.PLACER)).*//*tries(16).*//*whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).replaceable().func_227317_b_().build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(1, 0.5F, 1))));*/
+  public static final ConfiguredFeature<?, ?> LANTERNS = register("lantern", Feature.TREE.withConfiguration((new BaseTreeFeatureConfig.Builder(getPumpkins(), new SimpleBlockStateProvider(Blocks.AIR.getDefaultState()), new BlobFoliagePlacer(FeatureSpread.func_242253_a(1, 1), FeatureSpread.func_242253_a(1, 1), 1), new StraightTrunkPlacer(1, 0, 0), new TwoLayerFeature(2, 0, 1))).setIgnoreVines().build()).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.7F, 1))));
 
   private static ConfiguredFeature<?, ?> register(String id, ConfiguredFeature<?, ?> feature) {
     return REGISTRY.register(id, feature);

@@ -14,6 +14,7 @@ import noobanidus.mods.mysticalbiomes.MysticalBiomes;
 import noobanidus.mods.mysticalbiomes.biome.BiomeVariants;
 import noobanidus.mods.mysticalbiomes.biome.PetrifiedWastesBiome;
 import noobanidus.mods.mysticalbiomes.biome.SproutForestBiome;
+import noobanidus.mods.mysticalbiomes.biome.UncannyForestBiome;
 import noobanidus.mods.mysticalbiomes.config.ConfigManager;
 
 import java.util.HashSet;
@@ -32,19 +33,25 @@ public class ModBiomes {
   public static Biome PETRIFIED_RIVER = register("petrified_river", PetrifiedWastesBiome.PETRIFIED_RIVER);
   public static Biome PETRIFIED_EDGE = register("petrified_edge", PetrifiedWastesBiome.PETRIFIED_EDGE);
   public static Biome PETRIFIED_CENTER = register("petrified_center", PetrifiedWastesBiome.PETRIFIED_CENTER);
-  /*  public static Biome UNCANNY_FOREST = register("uncanny_forest", UncannyForestBiome.UNCANNY_FOREST);*/
+  public static Biome UNCANNY_FOREST = register("uncanny_forest", UncannyForestBiome.UNCANNY_FOREST);
+  public static Biome UNCANNY_BEACH = register("uncanny_beach", UncannyForestBiome.UNCANNY_BEACH);
+  public static Biome UNCANNY_RIVER = register("uncanny_river", UncannyForestBiome.UNCANNY_RIVER);
 
   static {
     BiomeVariants.addReplacement(k(PETRIFIED_WASTES), k(PETRIFIED_RIVER), 1, BiomeVariants.VariantType.RIVER);
     BiomeVariants.addReplacement(k(PETRIFIED_WASTES), k(PETRIFIED_BEACH), 1, BiomeVariants.VariantType.SHORE);
     BiomeVariants.addReplacement(k(PETRIFIED_WASTES), k(PETRIFIED_EDGE), 1, BiomeVariants.VariantType.EDGE);
     BiomeVariants.addReplacement(k(PETRIFIED_WASTES), k(PETRIFIED_CENTER), 1, BiomeVariants.VariantType.CENTER);
+    BiomeVariants.addReplacement(k(PETRIFIED_BEACH), k(PETRIFIED_RIVER), 1, BiomeVariants.VariantType.RIVER);
     BiomeVariants.addReplacement(k(SPROUT_FOREST), k(SPROUT_RIVER), 1, BiomeVariants.VariantType.RIVER);
     BiomeVariants.addReplacement(k(SPROUT_FOREST), k(SPROUT_BEACH), 1, BiomeVariants.VariantType.SHORE);
+    BiomeVariants.addReplacement(k(SPROUT_BEACH), k(SPROUT_RIVER), 1, BiomeVariants.VariantType.RIVER);
+    BiomeVariants.addReplacement(k(UNCANNY_FOREST), k(UNCANNY_RIVER), 1, BiomeVariants.VariantType.RIVER);
+    BiomeVariants.addReplacement(k(UNCANNY_FOREST), k(UNCANNY_BEACH), 1, BiomeVariants.VariantType.SHORE);
+    BiomeVariants.addReplacement(k(UNCANNY_BEACH), k(UNCANNY_RIVER), 1, BiomeVariants.VariantType.RIVER);
   }
 
   public static void load() {
-
   }
 
   private static Biome register(String name, Biome biome) {
@@ -76,6 +83,6 @@ public class ModBiomes {
 
     register(ModBiomes.PETRIFIED_WASTES, ConfigManager.STONE_WASTES, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.OVERWORLD, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.WASTELAND);
 
-    /*    register(ModBiomes.UNCANNY_FOREST, ConfigManager.UNCANNY_FOREST, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.OVERWORLD, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.MAGICAL);*/
+    register(ModBiomes.UNCANNY_FOREST, ConfigManager.UNCANNY_FOREST, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.OVERWORLD, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.MAGICAL);
   }
 }

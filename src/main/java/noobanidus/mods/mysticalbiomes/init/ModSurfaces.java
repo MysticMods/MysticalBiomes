@@ -8,7 +8,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import noobanidus.libs.noobutil.world.gen.config.SupplierSurfaceBuilderConfig;
 import noobanidus.libs.noobutil.world.gen.feature.SupplierDefaultSurfaceBuilder;
+import noobanidus.libs.noobutil.world.gen.surfacebuilder.BeachSurfaceBuilder;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
+import noobanidus.mods.mysticalbiomes.world.surface.ResourceSurfaceBuilderConfig;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,8 +19,7 @@ import java.util.Set;
 public class ModSurfaces {
   private static Set<SurfaceBuilder<?>> SURFACES = new HashSet<>();
 
-  public static SurfaceBuilder<SupplierSurfaceBuilderConfig> SMOOTH_STONE_SURFACE = register("smooth_stone", new SupplierDefaultSurfaceBuilder(SupplierSurfaceBuilderConfig.CODEC));
-  public static SurfaceBuilder<SupplierSurfaceBuilderConfig> PETRIFIED_LAKE_SURFACE = register("petrified_lake", new SupplierDefaultSurfaceBuilder(SupplierSurfaceBuilderConfig.CODEC));
+  public static SurfaceBuilder<SupplierSurfaceBuilderConfig> SUPPLIER_DEFAULT = register("supplier_default", new SupplierDefaultSurfaceBuilder(SupplierSurfaceBuilderConfig.CODEC));
 
   private static <T extends ISurfaceBuilderConfig> SurfaceBuilder<T> register(String name, SurfaceBuilder<T> type) {
     ResourceLocation rl = new ResourceLocation(MysticalBiomes.MODID, name);

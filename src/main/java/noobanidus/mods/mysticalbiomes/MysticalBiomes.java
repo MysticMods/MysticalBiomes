@@ -13,6 +13,7 @@ import noobanidus.libs.noobutil.command.GenDataCommand;
 import noobanidus.libs.noobutil.registrate.CustomRegistrate;
 import noobanidus.mods.mysticalbiomes.config.ConfigManager;
 import noobanidus.mods.mysticalbiomes.gen.LootTableGenerator;
+import noobanidus.mods.mysticalbiomes.init.ModLoot;
 import noobanidus.mods.mysticalbiomes.setup.ModSetup;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,6 +33,7 @@ public class MysticalBiomes {
     bus.addListener(ModSetup::init);
     bus.addListener(this::onDataGenerate);
 
+    ModLoot.load();
     MinecraftForge.EVENT_BUS.addListener(this::commandRegisterEvent);
   }
 
@@ -41,6 +43,7 @@ public class MysticalBiomes {
 
   public void onDataGenerate(GatherDataEvent event) {
     if (event.includeServer()) {
+      ModLoot.REGISTRY.registration();
       event.getGenerator().addProvider(new LootTableGenerator(event.getGenerator()));
     }
   }

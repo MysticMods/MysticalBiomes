@@ -8,9 +8,11 @@ import net.minecraft.data.LootTableProvider;
 import net.minecraft.item.Items;
 import net.minecraft.loot.*;
 import net.minecraft.loot.functions.EnchantRandomly;
+import net.minecraft.loot.functions.EnchantWithLevels;
 import net.minecraft.loot.functions.SetCount;
 import net.minecraft.util.ResourceLocation;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
+import noobanidus.mods.mysticalbiomes.loot.functions.RandomPotion;
 
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,8 @@ import java.util.function.Supplier;
 
 public class LootTableGenerator extends LootTableProvider {
   public static ResourceLocation MUSHROOM_HUT = new ResourceLocation(MysticalBiomes.MODID, "mushroom_hut");
+  public static ResourceLocation TOTEM = new ResourceLocation(MysticalBiomes.MODID, "totem");
+  public static ResourceLocation HENGE = new ResourceLocation(MysticalBiomes.MODID, "henge");
 
   private final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> tables = ImmutableList.of(Pair.of(ChestLootTables::new, LootParameterSets.CHEST));
 
@@ -90,6 +94,88 @@ public class LootTableGenerator extends LootTableProvider {
                       .addEntry(ItemLootEntry.builder(ModItems.YOUNG_PEARL.get()).weight(10).acceptFunction(SetCount.builder(RandomValueRange.of(2.0F, 8.0F))))
                       .addEntry(ItemLootEntry.builder(Items.FISHING_ROD).weight(15).acceptFunction(EnchantRandomly.func_215900_c()))
                       .addEntry(EmptyLootEntry.func_216167_a().weight(18))
+              )
+      );
+      consumer.accept(
+          TOTEM,
+          LootTable.builder()
+              .addLootPool(
+                  LootPool.builder()
+                      .rolls(ConstantRange.of(2))
+                      .addEntry(ItemLootEntry.builder(Items.RED_MUSHROOM).weight(10).acceptFunction(SetCount.builder(RandomValueRange.of(2.0f, 12f))))
+                      .addEntry(ItemLootEntry.builder(Items.BROWN_MUSHROOM).weight(10).acceptFunction(SetCount.builder(RandomValueRange.of(2.0f, 12f))))
+                      .addEntry(ItemLootEntry.builder(Items.WITHER_ROSE).weight(1).acceptFunction(SetCount.builder(RandomValueRange.of(1.0f, 3.0f))))
+              )
+              .addLootPool(
+                  LootPool.builder()
+                      .rolls(RandomValueRange.of(0, 3))
+                      .addEntry(ItemLootEntry.builder(Items.EMERALD).weight(4).acceptFunction(SetCount.builder(RandomValueRange.of(1.0f, 5.0f))))
+                      .addEntry(ItemLootEntry.builder(Items.GOLDEN_CARROT).weight(10).acceptFunction(SetCount.builder(RandomValueRange.of(3, 6))))
+                      .addEntry(ItemLootEntry.builder(Items.GUNPOWDER).weight(12).acceptFunction(SetCount.builder(RandomValueRange.of(6, 12))))
+                      .addEntry(ItemLootEntry.builder(Items.EXPERIENCE_BOTTLE).weight(2).acceptFunction(SetCount.builder(RandomValueRange.of(2, 5))))
+              )
+              .addLootPool(
+                  LootPool.builder()
+                      .rolls(RandomValueRange.of(0, 1))
+                      .addEntry(ItemLootEntry.builder(Items.WITHER_SKELETON_SKULL).weight(1))
+                      .addEntry(ItemLootEntry.builder(Items.FIREWORK_ROCKET).weight(4).acceptFunction(SetCount.builder(RandomValueRange.of(2, 6))))
+              )
+              .addLootPool(
+                  LootPool.builder()
+                      .rolls(RandomValueRange.of(1, 3))
+                      .addEntry(ItemLootEntry.builder(Items.ARMOR_STAND).weight(4))
+                      .addEntry(ItemLootEntry.builder(Items.SCAFFOLDING).weight(8).acceptFunction(SetCount.builder(RandomValueRange.of(12, 24))))
+                      .addEntry(ItemLootEntry.builder(Items.OBSIDIAN).weight(6).acceptFunction(SetCount.builder(RandomValueRange.of(6, 12))))
+                      .addEntry(ItemLootEntry.builder(Items.SOUL_CAMPFIRE).weight(1))
+              )
+      );
+      consumer.accept(
+          HENGE,
+          LootTable.builder()
+              .addLootPool(
+                  LootPool.builder()
+                      .rolls(ConstantRange.of(2))
+                      .addEntry(ItemLootEntry.builder(Items.RED_MUSHROOM).weight(10).acceptFunction(SetCount.builder(RandomValueRange.of(2.0f, 12f))))
+                      .addEntry(ItemLootEntry.builder(Items.BROWN_MUSHROOM).weight(10).acceptFunction(SetCount.builder(RandomValueRange.of(2.0f, 12f))))
+                      .addEntry(ItemLootEntry.builder(Items.WITHER_ROSE).weight(1).acceptFunction(SetCount.builder(RandomValueRange.of(1.0f, 3.0f))))
+              )
+              .addLootPool(
+                  LootPool.builder()
+                      .rolls(ConstantRange.of(1))
+                      .addEntry(ItemLootEntry.builder(Items.SOUL_SAND).acceptFunction(SetCount.builder(RandomValueRange.of(1, 6))))
+              )
+              .addLootPool(
+                  LootPool.builder()
+                      .rolls(RandomValueRange.of(1, 5))
+                      .addEntry(ItemLootEntry.builder(Items.GLOWSTONE_DUST).weight(3).acceptFunction(SetCount.builder(RandomValueRange.of(4, 18))))
+                      .addEntry(ItemLootEntry.builder(Items.REDSTONE).weight(5).acceptFunction(SetCount.builder(RandomValueRange.of(8, 21))))
+                      .addEntry(ItemLootEntry.builder(Items.SUGAR).weight(8).acceptFunction(SetCount.builder(RandomValueRange.of(10, 32))))
+                      .addEntry(ItemLootEntry.builder(Items.STICK).weight(14).acceptFunction(SetCount.builder(RandomValueRange.of(14, 21))))
+                      .addEntry(ItemLootEntry.builder(Items.GLASS_BOTTLE).weight(18).acceptFunction(SetCount.builder(RandomValueRange.of(16, 32))))
+              )
+              .addLootPool(
+                  LootPool.builder()
+                      .rolls(RandomValueRange.of(1, 3))
+                      .addEntry(ItemLootEntry.builder(Items.MAGMA_CREAM).weight(6).acceptFunction(SetCount.builder(RandomValueRange.of(3, 6))))
+                      .addEntry(ItemLootEntry.builder(Items.GLISTERING_MELON_SLICE).weight(2).acceptFunction(SetCount.builder(RandomValueRange.of(1, 5))))
+                      .addEntry(ItemLootEntry.builder(Items.FERMENTED_SPIDER_EYE).weight(1).acceptFunction(SetCount.builder(RandomValueRange.of(1, 3))))
+              )
+              .addLootPool(
+                  LootPool.builder()
+                      .rolls(RandomValueRange.of(0, 2))
+                      .addEntry(ItemLootEntry.builder(Items.RAIL).weight(10).acceptFunction(SetCount.builder(RandomValueRange.of(6, 18))))
+                      .addEntry(ItemLootEntry.builder(Items.LANTERN).weight(2).acceptFunction(SetCount.builder(RandomValueRange.of(1, 4))))
+              )
+              .addLootPool(
+                  LootPool.builder()
+                      .rolls(RandomValueRange.of(0, 1))
+                      .addEntry(ItemLootEntry.builder(Items.DIAMOND_SHOVEL).weight(20).acceptFunction(EnchantWithLevels.func_215895_a(RandomValueRange.of(20, 30))))
+                      .addEntry(ItemLootEntry.builder(Items.NETHERITE_SHOVEL).weight(1).acceptFunction(EnchantWithLevels.func_215895_a(RandomValueRange.of(20, 30))))
+              )
+              .addLootPool(
+                  LootPool.builder()
+                      .rolls(RandomValueRange.of(1, 3))
+                      .addEntry(ItemLootEntry.builder(Items.POTION).acceptFunction(RandomPotion.builder()))
               )
       );
     }
