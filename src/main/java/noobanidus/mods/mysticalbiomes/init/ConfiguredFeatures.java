@@ -62,7 +62,9 @@ public class ConfiguredFeatures {
 
   public static final ConfiguredFeature<?, ?> TALL_RED_MUSHROOMS = register("tall_red_mushrooms", Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(WIDE_TALL_RED_MUSHROOM.withChance(0.3f)), TALL_RED_MUSHROOM)).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.1f, 1))));
 
-  public static final ConfiguredFeature<?, ?> HUGE_UNCANNY_MUSHROOM = register("huge_uncanny_mushroom", ModFeatures.TALL_RED_MUSHROOM.withConfiguration(new BiggerMushroomFeatureConfig((new mysticmods.mysticalworld.world.SupplierBlockStateProvider("mysticalworld", "uncanny_mushroom_block")).addPair("down", false), new SimpleBlockStateProvider(Blocks.MUSHROOM_STEM.getDefaultState()), 2, 5, 3)).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.3f, 1))));
+  public static final ConfiguredFeature<?, ?> HUGE_UNCANNY_MUSHROOM = register("huge_uncanny_mushroom", mysticmods.mysticalworld.init.ConfiguredFeatures.HUGE_UNCANNY_MUSHROOM);
+
+  //public static final ConfiguredFeature<?, ?> HUGE_UNCANNY_MUSHROOM = register("huge_uncanny_mushroom", ModFeatures.TALL_RED_MUSHROOM.withConfiguration(new BiggerMushroomFeatureConfig((new mysticmods.mysticalworld.world.SupplierBlockStateProvider("mysticalworld", "uncanny_mushroom_block")).addPair("down", false), new SimpleBlockStateProvider(Blocks.MUSHROOM_STEM.getDefaultState()), 2, 5, 3)).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.3f, 1))));
 
   public static final ConfiguredFeature<?, ?> SPREAD_OAK_TREES = register("spread_oak_trees", Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(Features.FANCY_OAK.withChance(0.5f), Features.FANCY_OAK_BEES_0002.withChance(0.05f), Features.OAK_BEES_0002.withChance(0.3f)), Features.OAK)).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(1, 0.1F, 1))));
 
