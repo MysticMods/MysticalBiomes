@@ -32,7 +32,7 @@ public class ModFeatures {
   public static final Feature<NoFeatureConfig> EMPTY = register("empty", new EmptyFeature());
 
   public static final Feature<NoFeatureConfig> SURFACE_FOSSIL = register("surface_fossil", new SurfaceFossilsFeature(NoFeatureConfig.field_236558_a_));
-  public static final Feature<BigMushroomFeatureConfig> TALL_RED_MUSHROOM = register("tall_red_mushroom", new TallRedMushroomFeature(BigMushroomFeatureConfig.CODEC));
+  public static final Feature<BiggerMushroomFeatureConfig> TALL_RED_MUSHROOM = register("tall_red_mushroom", new ConfigurableHeightBigMushroomFeature(BiggerMushroomFeatureConfig.CODEC));
   public static final Feature<SupplierBlockStateFeatureConfig> SUPPLIER_BLOCK_SPIKE = register("supplier_spike", new SupplierBlockSpikeFeature(SupplierBlockStateFeatureConfig.CODEC));
   public static final Feature<SupplierSphereReplaceConfig> SUPPLIER_DISK = register("supplier_disk", new SupplierSphereReplaceFeature(SupplierSphereReplaceConfig.CODEC));
   public static final Feature<SupplierSphereReplaceConfig> SUPPLIER_REPLACE_DISK = register("supplier_replace_disk", new SupplierSphereReplaceWaterFeature(SupplierSphereReplaceConfig.CODEC));

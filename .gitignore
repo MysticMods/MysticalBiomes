@@ -6,7 +6,7 @@
 **/build
 
 ## ForgeGradle
-/run
+/run_old
 /*/run
 /*.launch
 /*/*.launch
@@ -46,3 +46,4 @@ user.properties
 eiostore.jks
 
 build\.sh
+/run/

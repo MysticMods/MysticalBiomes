@@ -296,7 +296,7 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "function": "mysticalbiomes:random_potion"
+              "function": "mysticalworld:random_potion"
             }
           ],
           "name": "minecraft:potion"

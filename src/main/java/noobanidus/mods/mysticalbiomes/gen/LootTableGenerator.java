@@ -3,6 +3,7 @@ package noobanidus.mods.mysticalbiomes.gen;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import mysticmods.mysticalworld.init.ModItems;
+import mysticmods.mysticalworld.loot.functions.RandomPotion;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
 import net.minecraft.item.Items;
@@ -12,7 +13,6 @@ import net.minecraft.loot.functions.EnchantWithLevels;
 import net.minecraft.loot.functions.SetCount;
 import net.minecraft.util.ResourceLocation;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
-import noobanidus.mods.mysticalbiomes.loot.functions.RandomPotion;
 
 import java.util.List;
 import java.util.Map;

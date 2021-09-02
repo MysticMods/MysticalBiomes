@@ -47,6 +47,8 @@ public class UncannyForestBiome {
       .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.DISK_UNCANNY_GRAVEL)
       .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.UNCANNY_MUSHROOMS_BROWN)
       .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.UNCANNY_MUSHROOMS_RED)
+      .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.UNCANNY_MUSHROOMS)
+      .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.HUGE_UNCANNY_MUSHROOM)
       .addDefaultFeatureFunctions(
           DefaultBiomeFeatures::withCavesAndCanyons,
           DefaultBiomeFeatures::withStrongholdAndMineshaft, // part of addStructures
