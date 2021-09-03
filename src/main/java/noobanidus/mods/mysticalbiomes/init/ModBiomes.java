@@ -23,7 +23,7 @@ import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = MysticalBiomes.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModBiomes {
-  private static Set<Biome> BIOMES = new HashSet<>();
+  private static final Set<Biome> BIOMES = new HashSet<>();
 
   public static Biome SPROUT_FOREST = register("sprout_forest", SproutForestBiome.SPROUT_FOREST);
   public static Biome SPROUT_RIVER = register("sprout_river", SproutForestBiome.SPROUT_RIVER);

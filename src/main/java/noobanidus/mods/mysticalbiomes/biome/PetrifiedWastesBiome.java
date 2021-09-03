@@ -12,7 +12,7 @@ import noobanidus.mods.mysticalbiomes.init.ConfiguredFeatures;
 import noobanidus.mods.mysticalbiomes.init.ConfiguredSurfaceBuilders;
 
 public class PetrifiedWastesBiome {
-  private static BiomeBuilder.BiomeTemplate PETRIFIED_TEMPLATE = new BiomeBuilder.BiomeTemplate(BiomeBuilder.BIOME_TEMPLATE.builder()
+  private static final BiomeBuilder.BiomeTemplate PETRIFIED_TEMPLATE = new BiomeBuilder.BiomeTemplate(BiomeBuilder.BIOME_TEMPLATE.builder()
       .surfaceBuilder(ConfiguredSurfaceBuilders.CONFIGURED_SOFT_STONE)
       .precipitation(Biome.RainType.NONE)
       .temperature(10.0F)

@@ -8,13 +8,14 @@ import javax.annotation.Nullable;
 import java.util.*;
 
 public class BiomeVariants {
-  private static Map<RegistryKey<Biome>, WeightedEntryList> biomeReplacements = new HashMap<>();
+  private static final Map<RegistryKey<Biome>, WeightedEntryList> biomeReplacements = new HashMap<>();
 
   public enum VariantType {
     HILLS, BIOME, RIVER, EDGE, CENTER, SHORE
   }
 
-  private static EnumMap<VariantType, Map<RegistryKey<Biome>, Entry>> map = new EnumMap<>(VariantType.class);
+  private static final EnumMap<VariantType, Map<RegistryKey<Biome>, Entry>> map = new EnumMap<>(VariantType.class);
+
   static {
     map.put(VariantType.HILLS, new HashMap<>());
     map.put(VariantType.RIVER, new HashMap<>());
@@ -76,7 +77,7 @@ public class BiomeVariants {
       return replacement;
     }
 
-    public static Entry of (RegistryKey<Biome> replacement) {
+    public static Entry of(RegistryKey<Biome> replacement) {
       return new Entry(replacement);
     }
   }

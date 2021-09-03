@@ -8,16 +8,14 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import noobanidus.libs.noobutil.world.gen.config.SupplierSurfaceBuilderConfig;
 import noobanidus.libs.noobutil.world.gen.feature.SupplierDefaultSurfaceBuilder;
-import noobanidus.libs.noobutil.world.gen.surfacebuilder.BeachSurfaceBuilder;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
-import noobanidus.mods.mysticalbiomes.world.surface.ResourceSurfaceBuilderConfig;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = MysticalBiomes.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModSurfaces {
-  private static Set<SurfaceBuilder<?>> SURFACES = new HashSet<>();
+  private static final Set<SurfaceBuilder<?>> SURFACES = new HashSet<>();
 
   public static SurfaceBuilder<SupplierSurfaceBuilderConfig> SUPPLIER_DEFAULT = register("supplier_default", new SupplierDefaultSurfaceBuilder(SupplierSurfaceBuilderConfig.CODEC));
 

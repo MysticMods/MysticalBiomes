@@ -2,7 +2,6 @@ package noobanidus.mods.mysticalbiomes.init;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
@@ -12,10 +11,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import noobanidus.libs.noobutil.types.IntPair;
 import noobanidus.libs.noobutil.world.gen.config.*;
-import noobanidus.libs.noobutil.world.gen.feature.*;
 import noobanidus.libs.noobutil.world.gen.feature.StructureFeature;
+import noobanidus.libs.noobutil.world.gen.feature.*;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
-import noobanidus.mods.mysticalbiomes.world.SupplierBlockStateProvider;
 import noobanidus.mods.mysticalbiomes.world.features.SupplierSphereReplaceWaterFeature;
 import noobanidus.mods.mysticalbiomes.world.features.SurfaceFossilsFeature;
 
@@ -27,7 +25,7 @@ import java.util.stream.IntStream;
 
 @Mod.EventBusSubscriber(modid = MysticalBiomes.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModFeatures {
-  private static Set<Feature<?>> FEATURES = new HashSet<>();
+  private static final Set<Feature<?>> FEATURES = new HashSet<>();
 
   public static final Feature<NoFeatureConfig> EMPTY = register("empty", new EmptyFeature());
 
@@ -59,11 +57,12 @@ public class ModFeatures {
   }
 
   public static class Config {
-      public static final BaseTreeFeatureConfig COBBLE_TREE = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.COBBLESTONE.getDefaultState()), new SimpleBlockStateProvider(Blocks.AIR.getDefaultState()), new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 3), new StraightTrunkPlacer(8, 4, 2), new TwoLayerFeature(1, 0, 1))).setIgnoreVines().build();
-      public static final BaseTreeFeatureConfig MOSSY_COBBLE_TREE = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.MOSSY_COBBLESTONE.getDefaultState()), new SimpleBlockStateProvider(Blocks.AIR.getDefaultState()), new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 3), new StraightTrunkPlacer(8, 4, 2), new TwoLayerFeature(1, 0, 1))).setIgnoreVines().build();
-      static {
-        COBBLE_TREE.forcePlacement();
-        MOSSY_COBBLE_TREE.forcePlacement();
-      }
+    public static final BaseTreeFeatureConfig COBBLE_TREE = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.COBBLESTONE.getDefaultState()), new SimpleBlockStateProvider(Blocks.AIR.getDefaultState()), new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 3), new StraightTrunkPlacer(8, 4, 2), new TwoLayerFeature(1, 0, 1))).setIgnoreVines().build();
+    public static final BaseTreeFeatureConfig MOSSY_COBBLE_TREE = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.MOSSY_COBBLESTONE.getDefaultState()), new SimpleBlockStateProvider(Blocks.AIR.getDefaultState()), new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 3), new StraightTrunkPlacer(8, 4, 2), new TwoLayerFeature(1, 0, 1))).setIgnoreVines().build();
+
+    static {
+      COBBLE_TREE.forcePlacement();
+      MOSSY_COBBLE_TREE.forcePlacement();
+    }
   }
 }

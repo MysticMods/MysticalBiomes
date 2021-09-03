@@ -20,7 +20,7 @@ public class Reference {
     return dynamicRegistry.getRegistry(Registry.BIOME_KEY);
   }
 
-  public static int getBiomeID (RegistryKey<Biome> key) {
+  public static int getBiomeID(RegistryKey<Biome> key) {
     MutableRegistry<Biome> reg = getBiomeRegistry();
     if (reg == null) {
       return -1;

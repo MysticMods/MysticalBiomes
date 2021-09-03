@@ -26,7 +26,6 @@ import noobanidus.libs.noobutil.registry.ConfiguredRegistry;
 import noobanidus.libs.noobutil.types.LazyStateSupplier;
 import noobanidus.libs.noobutil.world.gen.config.*;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
-import noobanidus.mods.mysticalbiomes.world.SupplierBlockStateProvider;
 import noobanidus.mods.mysticalbiomes.world.placer.ColumnBasePlacer;
 
 import java.util.Arrays;

@@ -12,17 +12,15 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
-import noobanidus.mods.mysticalbiomes.world.structures.DarkHutStructure;
 import noobanidus.mods.mysticalbiomes.world.structures.HengeStructure;
 import noobanidus.mods.mysticalbiomes.world.structures.MushroomHutStructure;
-import noobanidus.mods.mysticalbiomes.world.structures.TotemStructure;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = MysticalBiomes.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModStructures {
-  private static Set<Structure<?>> STRUCTURES = new HashSet<>();
+  private static final Set<Structure<?>> STRUCTURES = new HashSet<>();
 
   public static final Structure<NoFeatureConfig> MUSHROOM_HUT = register("mushroom_hut", new MushroomHutStructure(NoFeatureConfig.field_236558_a_));
   public static final Structure<NoFeatureConfig> HENGE = register("henge", new HengeStructure(NoFeatureConfig.field_236558_a_));

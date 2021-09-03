@@ -25,11 +25,8 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.StructureFeature;
 import net.minecraft.world.gen.feature.template.IStructureProcessorType;
 import net.minecraft.world.gen.feature.template.StructureProcessorList;
-import net.minecraft.world.gen.settings.DimensionGeneratorSettings;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilder;
 import net.minecraft.world.storage.FolderName;
-import net.minecraft.world.storage.ISpawnWorldInfo;
-import net.minecraft.world.storage.ServerWorldInfo;
 import net.minecraftforge.fml.ModList;
 
 import java.io.IOException;
@@ -70,7 +67,6 @@ public class GenDataCommand {
     Registry<ConfiguredCarver<?>> carverRegistry = /*manager.getRegistry(Registry.CONFIGURED_CARVER_KEY)*/ WorldGenRegistries.CONFIGURED_CARVER;
     Registry<ConfiguredSurfaceBuilder<?>> surfaceBuilderRegistry = /*manager.getRegistry(Registry.CONFIGURED_SURFACE_BUILDER_KEY)*/ WorldGenRegistries.CONFIGURED_SURFACE_BUILDER;
     Registry<StructureProcessorList> structureProcessorRegistry = /*manager.getRegistry(Registry.STRUCTURE_PROCESSOR_LIST_KEY)*/ WorldGenRegistries.STRUCTURE_PROCESSOR_LIST;
-
 
 
 //        Function<DimensionGeneratorSettings, DataResult<JsonElement>> dimensionGeneratorSettingsCodec = JsonOps.INSTANCE.withEncoder(DimensionGeneratorSettings.field_236201_a_);

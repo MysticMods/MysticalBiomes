@@ -13,7 +13,7 @@ import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = MysticalBiomes.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModTypes {
-  private static Set<BlockStateProviderType<?>> TYPES = new HashSet<>();
+  private static final Set<BlockStateProviderType<?>> TYPES = new HashSet<>();
 
   public static BlockStateProviderType<?> SUPPLIER_BLOCK_STATE_PROVIDER = register("supplier_block_state_provider", new BlockStateProviderType<>(SupplierBlockStateProvider.CODEC));
 

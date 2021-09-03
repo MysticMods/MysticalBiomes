@@ -1,7 +1,5 @@
 package noobanidus.mods.mysticalbiomes.init;
 
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.gen.FlatGenerationSettings;
 import net.minecraft.world.gen.feature.IFeatureConfig;
@@ -28,7 +26,7 @@ public class ConfiguredStructures {
     return result;
   }
 
-  public static void registerStructures () {
+  public static void registerStructures() {
     CONFIGURED_STRUCTURES.forEach(FlatGenerationSettings.STRUCTURES::put);
   }
 }
