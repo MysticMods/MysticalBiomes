@@ -1,6 +1,5 @@
 package noobanidus.mods.mysticalbiomes;
 
-import mysticmods.mysticalworld.init.ModLoot;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
