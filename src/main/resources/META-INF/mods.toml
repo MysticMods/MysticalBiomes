@@ -24,3 +24,9 @@ A collection of mystical biomes to improve your world!
     versionRange="[1.16.4,)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.mysticalbiomes]]
+    modId="mysticalworld"
+    mandatory=true
+    versionRange="[0.3.3.19,)"
+    ordering="NONE"
+    side="BOTH"
