@@ -15,7 +15,7 @@ A collection of mystical biomes to improve your world!
 [[dependencies.mysticalbiomes]]
     modId="forge"
     mandatory=true
-    versionRange="[36)"
+    versionRange="[36,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.mysticalbiomes]]
