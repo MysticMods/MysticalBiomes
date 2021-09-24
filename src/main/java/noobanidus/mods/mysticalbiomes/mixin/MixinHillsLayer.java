@@ -17,8 +17,8 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 @Mixin(HillsLayer.class)
 public class MixinHillsLayer {
   @Inject(
-      method = "apply(Lnet/minecraft/world/gen/INoiseRandom;Lnet/minecraft/world/gen/area/IArea;Lnet/minecraft/world/gen/area/IArea;II)I",
-      at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/world/gen/INoiseRandom;random(I)I"),
+      method = "applyPixel(Lnet/minecraft/world/gen/INoiseRandom;Lnet/minecraft/world/gen/area/IArea;Lnet/minecraft/world/gen/area/IArea;II)I",
+      at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/world/gen/INoiseRandom;nextRandom(I)I"),
       locals = LocalCapture.CAPTURE_FAILHARD,
       cancellable = true)
   private void transformVariants(INoiseRandom rand, IArea area1, IArea area2, int x, int z, CallbackInfoReturnable<Integer> cir, int i, int j, int k) {
