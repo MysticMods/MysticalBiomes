@@ -16,7 +16,7 @@ public class ColumnBasePlacer extends AbstractColumnBasePlacer {
   }
 
   @Override
-  protected BlockPlacerType<?> getBlockPlacerType() {
+  protected BlockPlacerType<?> type() {
     return ModPlacers.COLUMN_BASE_PLACER;
   }
 }

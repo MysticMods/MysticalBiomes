@@ -15,9 +15,9 @@ public class Reference {
   @Nullable
   private static MutableRegistry<Biome> getBiomeRegistry() {
     if (dynamicRegistry == null) {
-      dynamicRegistry = ServerLifecycleHooks.getCurrentServer().func_244267_aX();
+      dynamicRegistry = ServerLifecycleHooks.getCurrentServer().registryAccess();
     }
-    return dynamicRegistry.getRegistry(Registry.BIOME_KEY);
+    return dynamicRegistry.registryOrThrow(Registry.BIOME_REGISTRY);
   }
 
   public static int getBiomeID(RegistryKey<Biome> key) {
@@ -26,7 +26,7 @@ public class Reference {
       return -1;
     }
 
-    Biome biome = reg.getValueForKey(key);
+    Biome biome = reg.get(key);
     if (biome == null) {
       return -1;
     }

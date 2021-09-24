@@ -18,7 +18,7 @@ public class SeparatedPlacement extends Placement<NoPlacementConfig> {
   public Stream<BlockPos> getPositions(WorldDecoratingHelper helper, Random rand, NoPlacementConfig config, BlockPos pos) {
     for (int x = -1; x <= 1; x++) {
       for (int z = -1; z <= 1; z++) {
-        if (helper.func_242894_a(pos.add(x, 0, z)).isSolid()) {
+        if (helper.getBlockState(pos.offset(x, 0, z)).canOcclude()) {
           return Stream.empty();
         }
       }

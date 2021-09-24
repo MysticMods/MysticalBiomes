@@ -16,7 +16,7 @@ public class SupplierSphereReplaceWaterFeature extends SupplierSphereReplaceFeat
   }
 
   @Override
-  public boolean generate(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, SupplierSphereReplaceConfig config) {
-    return reader.getFluidState(pos).isTagged(FluidTags.WATER) && super.generate(reader, generator, rand, pos, config);
+  public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, SupplierSphereReplaceConfig config) {
+    return reader.getFluidState(pos).is(FluidTags.WATER) && super.place(reader, generator, rand, pos, config);
   }
 }

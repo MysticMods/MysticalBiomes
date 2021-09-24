@@ -30,8 +30,8 @@ public class WorldSetup {
 
   private static boolean getGetCodecMethod() {
     if (GETCODEC_METHOD == null) {
-      // TODO: Beware that updating to mojmap using the standard gradle task *can and will* replace `func_230347_a_` with the actual mojmap name (if one is found). This will not cause a crash in a development environment, but will crash normal, obfuscated clients.
-      Method codec = ObfuscationReflectionHelper.findMethod(ChunkGenerator.class, "func_230347_a_");
+      // TODO: Beware that updating to mojmap using the standard gradle task *can and will* replace `codec` with the actual mojmap name (if one is found). This will not cause a crash in a development environment, but will crash normal, obfuscated clients.
+      Method codec = ObfuscationReflectionHelper.findMethod(ChunkGenerator.class, "codec");
       MethodHandles.Lookup l = MethodHandles.lookup();
       try {
         GETCODEC_METHOD = l.unreflect(codec);
@@ -53,7 +53,7 @@ public class WorldSetup {
     ResourceLocation chunkGen;
     try {
       //noinspection unchecked
-      chunkGen = Registry.CHUNK_GENERATOR_CODEC.getKey((Codec<? extends ChunkGenerator>) GETCODEC_METHOD.invokeExact(serverWorld.getChunkProvider().generator));
+      chunkGen = Registry.CHUNK_GENERATOR.getKey((Codec<? extends ChunkGenerator>) GETCODEC_METHOD.invokeExact(serverWorld.getChunkSource().generator));
     } catch (Throwable throwable) {
       MysticalBiomes.LOG.error("Unable to look up " + serverWorld + "'s chunk provider's generator resource location.", throwable);
       return null;
@@ -66,7 +66,7 @@ public class WorldSetup {
     if (event.getWorld() instanceof ServerWorld) {
       ServerWorld serverWorld = (ServerWorld) event.getWorld();
 
-      if (serverWorld.getChunkProvider().getChunkGenerator() instanceof FlatChunkGenerator && serverWorld.getDimensionKey().equals(World.OVERWORLD)) {
+      if (serverWorld.getChunkSource().getGenerator() instanceof FlatChunkGenerator && serverWorld.dimension().equals(World.OVERWORLD)) {
         return;
       }
 
@@ -75,15 +75,15 @@ public class WorldSetup {
         return;
       }
 
-      Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkProvider().generator.func_235957_b_().func_236195_a_());
-      if (serverWorld.getDimensionKey().equals(World.OVERWORLD)) {
-        tempMap.put(ModStructures.MUSHROOM_HUT, DimensionStructuresSettings.field_236191_b_.get(ModStructures.MUSHROOM_HUT));
-        tempMap.put(ModStructures.HENGE, DimensionStructuresSettings.field_236191_b_.get(ModStructures.HENGE));
+      Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkSource().generator.getSettings().structureConfig());
+      if (serverWorld.dimension().equals(World.OVERWORLD)) {
+        tempMap.put(ModStructures.MUSHROOM_HUT, DimensionStructuresSettings.DEFAULTS.get(ModStructures.MUSHROOM_HUT));
+        tempMap.put(ModStructures.HENGE, DimensionStructuresSettings.DEFAULTS.get(ModStructures.HENGE));
       } else {
         tempMap.remove(ModStructures.MUSHROOM_HUT);
         tempMap.remove(ModStructures.HENGE);
       }
-      serverWorld.getChunkProvider().generator.func_235957_b_().field_236193_d_ = tempMap;
+      serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
     }
   }
 }

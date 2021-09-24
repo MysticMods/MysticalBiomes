@@ -13,6 +13,9 @@ import net.minecraft.world.gen.feature.template.TemplateManager;
 import noobanidus.libs.noobutil.world.gen.structure.SimpleStructure;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
 
+import net.minecraft.world.gen.feature.structure.Structure.IStartFactory;
+import noobanidus.libs.noobutil.world.gen.structure.SimpleStructure.SimpleStart;
+
 public class MushroomHutStructure extends SimpleStructure {
   public MushroomHutStructure(Codec<NoFeatureConfig> codec) {
     super(codec);

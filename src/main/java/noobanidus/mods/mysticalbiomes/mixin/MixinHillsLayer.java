@@ -22,10 +22,10 @@ public class MixinHillsLayer {
       locals = LocalCapture.CAPTURE_FAILHARD,
       cancellable = true)
   private void transformVariants(INoiseRandom rand, IArea area1, IArea area2, int x, int z, CallbackInfoReturnable<Integer> cir, int i, int j, int k) {
-    if (rand.random(3) == 0 || k == 0) {
+    if (rand.nextRandom(3) == 0 || k == 0) {
       cir.setReturnValue(i);
     }
-    RegistryKey<Biome> biomeKey = BiomeRegistry.getKeyFromID(i);
+    RegistryKey<Biome> biomeKey = BiomeRegistry.byId(i);
     RegistryKey<Biome> replacement = BiomeVariants.pickReplacement(rand, biomeKey, BiomeVariants.VariantType.HILLS);
     if (replacement != null) {
       cir.setReturnValue(Reference.getBiomeID(replacement));

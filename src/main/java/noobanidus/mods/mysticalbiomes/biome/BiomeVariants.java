@@ -136,7 +136,7 @@ public class BiomeVariants {
         return entries.get(0).getReplacement();
       }
 
-      return search(random.random(Integer.MAX_VALUE) * getTotal() / Integer.MAX_VALUE).getReplacement();
+      return search(random.nextRandom(Integer.MAX_VALUE) * getTotal() / Integer.MAX_VALUE).getReplacement();
     }
 
     private WeightedEntry search(double target) {

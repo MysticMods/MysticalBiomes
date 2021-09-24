@@ -29,7 +29,7 @@ public class ModFeatures {
 
   public static final Feature<NoFeatureConfig> EMPTY = register("empty", new EmptyFeature());
 
-  public static final Feature<NoFeatureConfig> SURFACE_FOSSIL = register("surface_fossil", new SurfaceFossilsFeature(NoFeatureConfig.field_236558_a_));
+  public static final Feature<NoFeatureConfig> SURFACE_FOSSIL = register("surface_fossil", new SurfaceFossilsFeature(NoFeatureConfig.CODEC));
   public static final Feature<BiggerMushroomFeatureConfig> TALL_RED_MUSHROOM = register("tall_red_mushroom", new ConfigurableHeightBigMushroomFeature(BiggerMushroomFeatureConfig.CODEC));
   public static final Feature<SupplierBlockStateFeatureConfig> SUPPLIER_BLOCK_SPIKE = register("supplier_spike", new SupplierBlockSpikeFeature(SupplierBlockStateFeatureConfig.CODEC));
   public static final Feature<SupplierSphereReplaceConfig> SUPPLIER_DISK = register("supplier_disk", new SupplierSphereReplaceFeature(SupplierSphereReplaceConfig.CODEC));
@@ -57,12 +57,12 @@ public class ModFeatures {
   }
 
   public static class Config {
-    public static final BaseTreeFeatureConfig COBBLE_TREE = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.COBBLESTONE.getDefaultState()), new SimpleBlockStateProvider(Blocks.AIR.getDefaultState()), new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 3), new StraightTrunkPlacer(8, 4, 2), new TwoLayerFeature(1, 0, 1))).setIgnoreVines().build();
-    public static final BaseTreeFeatureConfig MOSSY_COBBLE_TREE = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.MOSSY_COBBLESTONE.getDefaultState()), new SimpleBlockStateProvider(Blocks.AIR.getDefaultState()), new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 3), new StraightTrunkPlacer(8, 4, 2), new TwoLayerFeature(1, 0, 1))).setIgnoreVines().build();
+    public static final BaseTreeFeatureConfig COBBLE_TREE = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.COBBLESTONE.defaultBlockState()), new SimpleBlockStateProvider(Blocks.AIR.defaultBlockState()), new BlobFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0), 3), new StraightTrunkPlacer(8, 4, 2), new TwoLayerFeature(1, 0, 1))).ignoreVines().build();
+    public static final BaseTreeFeatureConfig MOSSY_COBBLE_TREE = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.MOSSY_COBBLESTONE.defaultBlockState()), new SimpleBlockStateProvider(Blocks.AIR.defaultBlockState()), new BlobFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0), 3), new StraightTrunkPlacer(8, 4, 2), new TwoLayerFeature(1, 0, 1))).ignoreVines().build();
 
     static {
-      COBBLE_TREE.forcePlacement();
-      MOSSY_COBBLE_TREE.forcePlacement();
+      COBBLE_TREE.setFromSapling();
+      MOSSY_COBBLE_TREE.setFromSapling();
     }
   }
 }

@@ -31,15 +31,15 @@ public class SurfaceFossilsFeature extends Feature<NoFeatureConfig> {
     super(p_i231955_1_);
   }
 
-  public boolean generate(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
-    Rotation rotation = Rotation.randomRotation(rand);
+  public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config) {
+    Rotation rotation = Rotation.getRandom(rand);
     int i = rand.nextInt(FOSSILS.length);
-    TemplateManager templatemanager = reader.getWorld().getServer().getTemplateManager();
-    Template template = templatemanager.getTemplateDefaulted(FOSSILS[i]);
+    TemplateManager templatemanager = reader.getLevel().getServer().getStructureManager();
+    Template template = templatemanager.getOrCreate(FOSSILS[i]);
     ChunkPos chunkpos = new ChunkPos(pos);
-    MutableBoundingBox mutableboundingbox = new MutableBoundingBox(chunkpos.getXStart(), 0, chunkpos.getZStart(), chunkpos.getXEnd(), 256, chunkpos.getZEnd());
-    PlacementSettings placementsettings = (new PlacementSettings()).setRotation(rotation).setBoundingBox(mutableboundingbox).setRandom(rand).addProcessor(BlockIgnoreStructureProcessor.AIR_AND_STRUCTURE_BLOCK);
-    BlockPos blockpos = template.transformedSize(rotation);
+    MutableBoundingBox mutableboundingbox = new MutableBoundingBox(chunkpos.getMinBlockX(), 0, chunkpos.getMinBlockZ(), chunkpos.getMaxBlockX(), 256, chunkpos.getMaxBlockZ());
+    PlacementSettings placementsettings = (new PlacementSettings()).setRotation(rotation).setBoundingBox(mutableboundingbox).setRandom(rand).addProcessor(BlockIgnoreStructureProcessor.STRUCTURE_AND_AIR);
+    BlockPos blockpos = template.getSize(rotation);
     int j = rand.nextInt(16 - blockpos.getX());
     int k = rand.nextInt(16 - blockpos.getZ());
     int l = 256;
@@ -54,7 +54,7 @@ public class SurfaceFossilsFeature extends Feature<NoFeatureConfig> {
     BlockPos blockpos1 = template.getZeroPositionWithTransform(pos2, Mirror.NONE, rotation);
     IntegrityProcessor integrityprocessor = new IntegrityProcessor(0.9F);
     placementsettings.clearProcessors().addProcessor(integrityprocessor);
-    template.func_237146_a_(reader, blockpos1, blockpos1, placementsettings, rand, 4);
+    template.placeInWorld(reader, blockpos1, blockpos1, placementsettings, rand, 4);
     return true;
   }
 }

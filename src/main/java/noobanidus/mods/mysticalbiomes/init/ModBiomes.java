@@ -62,7 +62,7 @@ public class ModBiomes {
   }
 
   private static RegistryKey<Biome> k(Biome b) {
-    return RegistryKey.getOrCreateKey(Registry.BIOME_KEY, Objects.requireNonNull(b.getRegistryName()));
+    return RegistryKey.create(Registry.BIOME_REGISTRY, Objects.requireNonNull(b.getRegistryName()));
   }
 
   private static void register(Biome b, BiomeConfig config, BiomeManager.BiomeType managerType, BiomeDictionary.Type... dictTypes) {

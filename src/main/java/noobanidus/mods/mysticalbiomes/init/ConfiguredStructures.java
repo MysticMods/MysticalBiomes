@@ -17,8 +17,8 @@ public class ConfiguredStructures {
 
   public static Map<Structure<?>, StructureFeature<?, ?>> CONFIGURED_STRUCTURES = new HashMap<>();
 
-  public static StructureFeature<?, ?> CONFIGURED_MUSHROOM_HOUSE = register("mushroom_house", ModStructures.MUSHROOM_HUT, ModStructures.MUSHROOM_HUT.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
-  public static StructureFeature<?, ?> CONFIGURED_HENGE = register("henge", ModStructures.HENGE, ModStructures.HENGE.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
+  public static StructureFeature<?, ?> CONFIGURED_MUSHROOM_HOUSE = register("mushroom_house", ModStructures.MUSHROOM_HUT, ModStructures.MUSHROOM_HUT.configured(IFeatureConfig.NONE));
+  public static StructureFeature<?, ?> CONFIGURED_HENGE = register("henge", ModStructures.HENGE, ModStructures.HENGE.configured(IFeatureConfig.NONE));
 
   private static StructureFeature<?, ?> register(String id, @Nullable Structure<?> structure, StructureFeature<?, ?> feature) {
     StructureFeature<?, ?> result = REGISTRY.register(id, feature);
@@ -27,6 +27,6 @@ public class ConfiguredStructures {
   }
 
   public static void registerStructures() {
-    CONFIGURED_STRUCTURES.forEach(FlatGenerationSettings.STRUCTURES::put);
+    CONFIGURED_STRUCTURES.forEach(FlatGenerationSettings.STRUCTURE_FEATURES::put);
   }
 }

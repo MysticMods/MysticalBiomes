@@ -18,33 +18,33 @@ public class PetrifiedWastesBiome {
       .temperature(10.0F)
       .downfall(0.0F)
       .effects(BiomeBuilder.createDefaultBiomeAmbience()
-          .withGrassColor(9470285)
-          .withFoliageColor(9470285)
-          .setWaterColor(0x809678)
-          .setWaterFogColor(0x809678)
-          .setFogColor(0x809678)
-          .withSkyColor(0x809678)
+          .grassColorOverride(9470285)
+          .foliageColorOverride(9470285)
+          .waterColor(0x809678)
+          .waterFogColor(0x809678)
+          .fogColor(0x809678)
+          .skyColor(0x809678)
       )
       .addDefaultFeatureFunctions(
-          DefaultBiomeFeatures::withStrongholdAndMineshaft,
-          DefaultBiomeFeatures::withCavesAndCanyons,
-          DefaultBiomeFeatures::withFossils,
-          DefaultBiomeFeatures::withMonsterRoom // addMonsterRooms
+          DefaultBiomeFeatures::addDefaultOverworldLandStructures,
+          DefaultBiomeFeatures::addDefaultCarvers,
+          DefaultBiomeFeatures::addFossilDecoration,
+          DefaultBiomeFeatures::addDefaultMonsterRoom // addMonsterRooms
       )
       .addStructureFeature(StructureFeatures.RUINED_PORTAL_MOUNTAIN)
-      .addSpawnFunction(DefaultBiomeFeatures::withBats)
+      .addSpawnFunction(DefaultBiomeFeatures::ambientSpawns)
       .addSpawnFunction(builder -> {
-        builder.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.HUSK, 95, 4, 4));
-        builder.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SKELETON_HORSE, 5, 1, 1));
-        builder.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SKELETON, 50, 4, 4));
-        builder.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SLIME, 100, 4, 4));
-        builder.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.ENDERMAN, 10, 1, 4));
-        builder.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.WITCH, 5, 1, 1));
+        builder.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.HUSK, 95, 4, 4));
+        builder.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SKELETON_HORSE, 5, 1, 1));
+        builder.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SKELETON, 50, 4, 4));
+        builder.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SLIME, 100, 4, 4));
+        builder.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.ENDERMAN, 10, 1, 4));
+        builder.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.WITCH, 5, 1, 1));
       })
       .addDefaultFeatureFunctions(
-          DefaultBiomeFeatures::withOverworldOres, // addOres
-          DefaultBiomeFeatures::withFossils,
-          DefaultBiomeFeatures::withFrozenTopLayer
+          DefaultBiomeFeatures::addDefaultOres, // addOres
+          DefaultBiomeFeatures::addFossilDecoration,
+          DefaultBiomeFeatures::addSurfaceFreezing
       ));
 
   public static BiomeBuilder.BiomeTemplate PETRIFIED_MAIN_TEMPLATE = new BiomeBuilder.BiomeTemplate(PETRIFIED_TEMPLATE.builder()
@@ -86,7 +86,7 @@ public class PetrifiedWastesBiome {
   public static Biome PETRIFIED_RIVER = PETRIFIED_TEMPLATE.builder()
       .category(Biome.Category.RIVER)
       .addSpawnFunctions((o) ->
-          o.withSpawner(EntityClassification.WATER_CREATURE, new MobSpawnInfo.Spawners(EntityType.SQUID, 2, 1, 4)).withSpawner(EntityClassification.WATER_AMBIENT, new MobSpawnInfo.Spawners(EntityType.SALMON, 5, 1, 5)).withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.DROWNED, 100, 1, 1))
+          o.addSpawn(EntityClassification.WATER_CREATURE, new MobSpawnInfo.Spawners(EntityType.SQUID, 2, 1, 4)).addSpawn(EntityClassification.WATER_AMBIENT, new MobSpawnInfo.Spawners(EntityType.SALMON, 5, 1, 5)).addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.DROWNED, 100, 1, 1))
       )
       .depth(0.1f)
       .scale(0.0f)

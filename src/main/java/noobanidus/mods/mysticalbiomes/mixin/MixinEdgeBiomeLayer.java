@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinEdgeBiomeLayer {
   @Inject(at = @At("HEAD"), method = "apply(Lnet/minecraft/world/gen/INoiseRandom;IIIII)I", cancellable = true)
   private void apply(INoiseRandom context, int north, int west, int south, int east, int center, CallbackInfoReturnable<Integer> info) {
-    RegistryKey<Biome> key = BiomeRegistry.getKeyFromID(center);
+    RegistryKey<Biome> key = BiomeRegistry.byId(center);
 
     RegistryKey<Biome> centerKey = BiomeVariants.pickReplacement(context, key, BiomeVariants.VariantType.CENTER);
     if (centerKey != null && mbSurrounded(north, west, south, east, center)) {

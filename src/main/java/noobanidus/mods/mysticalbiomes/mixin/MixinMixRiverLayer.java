@@ -18,11 +18,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinMixRiverLayer {
   @Inject(at = @At("HEAD"), method = "apply(Lnet/minecraft/world/gen/INoiseRandom;Lnet/minecraft/world/gen/area/IArea;Lnet/minecraft/world/gen/area/IArea;II)I", cancellable = true)
   private void apply(INoiseRandom random, IArea area1, IArea area2, int x, int z, CallbackInfoReturnable<Integer> info) {
-    int landId = area1.getValue(x, z);
-    RegistryKey<Biome> key = BiomeRegistry.getKeyFromID(landId);
+    int landId = area1.get(x, z);
+    RegistryKey<Biome> key = BiomeRegistry.byId(landId);
 
-    int riverId = area2.getValue(x, z);
-    RegistryKey<Biome> river = BiomeRegistry.getKeyFromID(riverId);
+    int riverId = area2.get(x, z);
+    RegistryKey<Biome> river = BiomeRegistry.byId(riverId);
     if (river == Biomes.RIVER) {
       RegistryKey<Biome> riverReplacement = BiomeVariants.pickReplacement(random, key, BiomeVariants.VariantType.RIVER);
       if (riverReplacement != null) {

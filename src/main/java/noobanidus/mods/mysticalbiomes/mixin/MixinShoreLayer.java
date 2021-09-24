@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinShoreLayer {
   @Inject(at = @At("HEAD"), method = "apply(Lnet/minecraft/world/gen/INoiseRandom;IIIII)I", cancellable = true)
   private void apply(INoiseRandom context, int north, int west, int south, int east, int center, CallbackInfoReturnable<Integer> info) {
-    RegistryKey<Biome> key = BiomeRegistry.getKeyFromID(center);
+    RegistryKey<Biome> key = BiomeRegistry.byId(center);
     RegistryKey<Biome> shoreKey = BiomeVariants.pickReplacement(context, key, BiomeVariants.VariantType.SHORE);
     if (shoreKey != null && mbNeighboursOcean(north, east, south, west)) {
       info.setReturnValue(Reference.getBiomeID(shoreKey));
@@ -36,7 +36,7 @@ public class MixinShoreLayer {
   }
 
   private static boolean mbIsOceanBiome(int id) {
-    RegistryKey<Biome> key = BiomeRegistry.getKeyFromID(id);
+    RegistryKey<Biome> key = BiomeRegistry.byId(id);
     return BiomeDictionary.getTypes(key).contains(BiomeDictionary.Type.OCEAN);
   }
 
@@ -54,7 +54,7 @@ public class MixinShoreLayer {
       // The parent-child relationship previously modeled in Biome itself is gone,
       // and has been - for the time being - replaced by a hardcoded raw-id map
       // in AddHillsLayer.
-      Int2IntMap parentChildMap = HillsLayer.field_242940_c;
+      Int2IntMap parentChildMap = HillsLayer.MUTATIONS;
       return parentChildMap.get(mainBiomeId) != secondaryBiomeId && parentChildMap.get(secondaryBiomeId) != mainBiomeId;
     }
   }
