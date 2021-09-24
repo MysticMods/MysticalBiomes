@@ -20,6 +20,9 @@ public class FogDensityEvent {
       if (info.getRenderViewEntity().getPosY() < 60) {
         return;
       }
+      if (info.getRenderViewEntity().isInWater()) {
+        return;
+      }
       Biome biome = info.getRenderViewEntity().world.getBiome(info.getBlockPos());
       ResourceLocation rl = biome.getRegistryName();
       if (rl != null && (rl.equals(ModBiomes.UNCANNY_BEACH.getRegistryName()) || rl.equals(ModBiomes.UNCANNY_FOREST.getRegistryName()) || rl.equals(ModBiomes.UNCANNY_RIVER.getRegistryName()))) {
