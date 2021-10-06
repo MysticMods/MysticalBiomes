@@ -31,7 +31,7 @@ public class WorldSetup {
   private static boolean getGetCodecMethod() {
     if (GETCODEC_METHOD == null) {
       // TODO: Beware that updating to mojmap using the standard gradle task *can and will* replace `codec` with the actual mojmap name (if one is found). This will not cause a crash in a development environment, but will crash normal, obfuscated clients.
-      Method codec = ObfuscationReflectionHelper.findMethod(ChunkGenerator.class, "codec");
+      Method codec = ObfuscationReflectionHelper.findMethod(ChunkGenerator.class, "func_230347_a_");
       MethodHandles.Lookup l = MethodHandles.lookup();
       try {
         GETCODEC_METHOD = l.unreflect(codec);
