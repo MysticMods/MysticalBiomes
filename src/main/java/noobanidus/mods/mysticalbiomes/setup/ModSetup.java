@@ -11,6 +11,7 @@ public class ModSetup {
       ConfiguredFeatures.REGISTRY.registration();
       ConfiguredStructures.REGISTRY.registration();
       ConfiguredSurfaceBuilders.REGISTRY.registration();
+      ConfiguredCarvers.REGISTRY.registration();
       ModBiomes.registration();
       ModStructures.setupStructures();
       ConfiguredStructures.registerStructures();

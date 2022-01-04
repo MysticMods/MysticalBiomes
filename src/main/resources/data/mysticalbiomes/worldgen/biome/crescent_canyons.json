@@ -1,0 +1,26 @@
+{
+  "surface_builder": "mysticalbiomes:canyons",
+  "depth": 1.2,
+  "scale": -0.11,
+  "temperature": 10,
+  "downfall": 0,
+  "precipitation": "none",
+  "temperature_modifier": "none",
+  "category": "desert",
+  "player_spawn_friendly": true,
+  "effects": {
+    "sky_color": 7907327,
+    "fog_color": 12638463,
+    "water_color": 4159204,
+    "water_fog_color": 329011
+  },
+  "starts": [],
+  "spawners": {},
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "mysticalbiomes:crescent_carver"
+    ]
+  },
+  "features": []
+}

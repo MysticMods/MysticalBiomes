@@ -13,9 +13,6 @@ import net.minecraft.world.gen.feature.template.TemplateManager;
 import noobanidus.libs.noobutil.world.gen.structure.SimpleStructure;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
 
-import net.minecraft.world.gen.feature.structure.Structure.IStartFactory;
-import noobanidus.libs.noobutil.world.gen.structure.SimpleStructure.SimpleStart;
-
 public class HengeStructure extends SimpleStructure {
   public HengeStructure(Codec<NoFeatureConfig> codec) {
     super(codec);

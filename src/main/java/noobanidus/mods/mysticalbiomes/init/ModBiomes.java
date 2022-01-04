@@ -11,10 +11,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import noobanidus.libs.noobutil.config.BiomeConfig;
 import noobanidus.mods.mysticalbiomes.MysticalBiomes;
-import noobanidus.mods.mysticalbiomes.biome.BiomeVariants;
-import noobanidus.mods.mysticalbiomes.biome.PetrifiedWastesBiome;
-import noobanidus.mods.mysticalbiomes.biome.SproutForestBiome;
-import noobanidus.mods.mysticalbiomes.biome.UncannyForestBiome;
+import noobanidus.mods.mysticalbiomes.biome.*;
 import noobanidus.mods.mysticalbiomes.config.ConfigManager;
 
 import java.util.HashSet;
@@ -37,6 +34,9 @@ public class ModBiomes {
   public static Biome UNCANNY_BEACH = register("uncanny_beach", UncannyForestBiome.UNCANNY_BEACH);
   public static Biome UNCANNY_RIVER = register("uncanny_river", UncannyForestBiome.UNCANNY_RIVER);
 
+/*  public static Biome CRESCENT_CANYONS = register("crescent_canyons", CrescentCanyonsBiome.CRESCENT_CANYONS);
+  public static Biome CRESCENT_EDGE = register("crescent_edge", CrescentCanyonsBiome.CRESCENT_EDGE);*/
+
   static {
     BiomeVariants.addReplacement(k(PETRIFIED_WASTES), k(PETRIFIED_RIVER), 1, BiomeVariants.VariantType.RIVER);
     BiomeVariants.addReplacement(k(PETRIFIED_WASTES), k(PETRIFIED_BEACH), 1, BiomeVariants.VariantType.SHORE);
@@ -49,6 +49,8 @@ public class ModBiomes {
     BiomeVariants.addReplacement(k(UNCANNY_FOREST), k(UNCANNY_RIVER), 1, BiomeVariants.VariantType.RIVER);
     BiomeVariants.addReplacement(k(UNCANNY_FOREST), k(UNCANNY_BEACH), 1, BiomeVariants.VariantType.SHORE);
     BiomeVariants.addReplacement(k(UNCANNY_BEACH), k(UNCANNY_RIVER), 1, BiomeVariants.VariantType.RIVER);
+/*    BiomeVariants.addReplacement(k(CRESCENT_CANYONS), k(CRESCENT_EDGE), 1, BiomeVariants.VariantType.EDGE);
+    BiomeVariants.addReplacement(k(CRESCENT_CANYONS), k(CRESCENT_CANYONS), 1, BiomeVariants.VariantType.RIVER);*/
   }
 
   public static void load() {
@@ -84,5 +86,7 @@ public class ModBiomes {
     register(ModBiomes.PETRIFIED_WASTES, ConfigManager.STONE_WASTES, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.OVERWORLD, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.WASTELAND);
 
     register(ModBiomes.UNCANNY_FOREST, ConfigManager.UNCANNY_FOREST, BiomeManager.BiomeType.COOL, BiomeDictionary.Type.OVERWORLD, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.MAGICAL);
+
+/*    register(ModBiomes.CRESCENT_CANYONS, ConfigManager.CRESCENT_CANYONS, BiomeManager.BiomeType.DESERT, BiomeDictionary.Type.OVERWORLD, BiomeDictionary.Type.DRY, BiomeDictionary.Type.SPARSE);*/
   }
 }

@@ -2,11 +2,11 @@ package noobanidus.mods.mysticalbiomes.mixin;
 
 import net.minecraft.util.RegistryKey;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeRegistry;
 import net.minecraft.world.gen.INoiseRandom;
 import net.minecraft.world.gen.area.IArea;
 import net.minecraft.world.gen.layer.HillsLayer;
 import noobanidus.mods.mysticalbiomes.biome.BiomeVariants;
+import noobanidus.mods.mysticalbiomes.world.DynamicBiomes;
 import noobanidus.mods.mysticalbiomes.world.Reference;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -25,7 +25,7 @@ public class MixinHillsLayer {
     if (rand.nextRandom(3) == 0 || k == 0) {
       cir.setReturnValue(i);
     }
-    RegistryKey<Biome> biomeKey = BiomeRegistry.byId(i);
+    RegistryKey<Biome> biomeKey = DynamicBiomes.byId(i);
     RegistryKey<Biome> replacement = BiomeVariants.pickReplacement(rand, biomeKey, BiomeVariants.VariantType.HILLS);
     if (replacement != null) {
       cir.setReturnValue(Reference.getBiomeID(replacement));
