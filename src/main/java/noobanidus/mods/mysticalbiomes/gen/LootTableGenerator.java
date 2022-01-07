@@ -89,7 +89,7 @@ public class LootTableGenerator extends LootTableProvider {
                   LootPool.lootPool()
                       .setRolls(RandomValueRange.between(0, 2))
                       .add(ItemLootEntry.lootTableItem(ModItems.CACTUS_AXE.get()).setWeight(6))
-                      .add(ItemLootEntry.lootTableItem(ModItems.BEETLE_MASK.get()).setWeight(3))
+                      .add(ItemLootEntry.lootTableItem(ModItems.BEETLE_HELMET.get()).setWeight(3))
                       .add(ItemLootEntry.lootTableItem(ModItems.ANTLER_HAT.get()).setWeight(3))
                       .add(ItemLootEntry.lootTableItem(ModItems.YOUNG_PEARL.get()).setWeight(10).apply(SetCount.setCount(RandomValueRange.between(2.0F, 8.0F))))
                       .add(ItemLootEntry.lootTableItem(Items.FISHING_ROD).setWeight(15).apply(EnchantRandomly.randomApplicableEnchantment()))
